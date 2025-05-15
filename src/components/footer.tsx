@@ -1,39 +1,139 @@
+'use client';
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Footer() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        type: "spring", 
+        stiffness: 100 
+      }
+    }
+  };
+  const linkVariants = {
+    initial: { x: 0 },
+    hover: { 
+      x: 5, 
+      transition: { duration: 0.2 } 
+    }
+  };
+
+  const borderVariants = {
+    hidden: { width: 0 },
+    visible: { 
+      width: "100%",
+      transition: { 
+        duration: 0.8,
+        delay: 0.5
+      }
+    }
+  };
+
   return (
-    <footer className="bg-primary text-primary-foreground pt-12 pb-4">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h2 className="text-xl font-bold mb-2">Ahmed Fahmy</h2>
-            <p className="text-primary-foreground/80">Software Engineer</p>
-          </div>
+    <footer className="bg-primary text-primary-foreground pt-16 pb-6">
+      <motion.div 
+        className="container mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10"
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants}>
+            <motion.h2 
+              className="text-2xl font-bold mb-2"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              Ahmed Fahmy
+            </motion.h2>
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "40px" }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+              className="h-1 bg-primary-foreground/50 mb-3"
+            />
+            <motion.p 
+              className="text-primary-foreground/80"
+              variants={itemVariants}
+            >
+              Software Engineer
+            </motion.p>
+          </motion.div>
           
-          <div>
-            <h3 className="text-lg font-medium mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="#services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="#portfolio" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Contact
-                </Link>
-              </li>
+          <motion.div variants={itemVariants}>
+            <motion.h3 
+              className="text-lg font-medium mb-4 relative inline-block"
+              variants={itemVariants}
+            >
+              Quick Links
+              <motion.div
+                className="absolute -bottom-1 left-0 h-0.5 bg-primary-foreground/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+              />
+            </motion.h3>
+            <ul className="space-y-3">
+              {['services', 'portfolio', 'contact'].map((item) => (
+                <motion.li key={item} variants={itemVariants}>
+                  <motion.div
+                    variants={linkVariants}
+                    initial="initial"
+                    whileHover="hover"
+                  >
+                    <Link 
+                      href={`#${item}`} 
+                      className="text-primary-foreground/80 hover:text-primary-foreground transition-colors flex items-center gap-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                    </Link>
+                  </motion.div>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
           
-          <div>
-            <h3 className="text-lg font-medium mb-4">Connect</h3>
-            <div className="flex space-x-4">
+          <motion.div variants={itemVariants}>
+            <motion.h3 
+              className="text-lg font-medium mb-4 relative inline-block"
+              variants={itemVariants}
+            >
+              Connect
+              <motion.div
+                className="absolute -bottom-1 left-0 h-0.5 bg-primary-foreground/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+              />
+            </motion.h3>
+            <motion.div 
+              className="flex flex-wrap gap-4"
+              variants={containerVariants}
+            >
               <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
               <SocialLink href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" icon="linkedin" />
               <SocialLink href="https://www.instagram.com/a7medfahmy8/" icon="instagram" />
@@ -41,14 +141,24 @@ export default function Footer() {
               <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
               <SocialLink href="https://www.facebook.com/A7medfahmy8?locale=ar_AR" icon="facebook" />
               <SocialLink href="https://www.youtube.com/FahmyCodeHub" icon="youtube" />
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
         
-        <div className="border-t border-primary-foreground/20 pt-4 text-center">
-          <p className="text-primary-foreground/70">&copy; 2024 Ahmed Fahmy | All Rights Reserved</p>
-        </div>
-      </div>
+        <motion.div 
+          className="border-t border-primary-foreground/20 pt-6 text-center"
+          variants={borderVariants}
+        >
+          <motion.p 
+            className="text-primary-foreground/70"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            &copy; {new Date().getFullYear()} Ahmed Fahmy | All Rights Reserved
+          </motion.p>
+        </motion.div>
+      </motion.div>
     </footer>
   );
 }
@@ -104,13 +214,15 @@ function SocialLink({ href, icon }: { href: string; icon: string }) {
   };
 
   return (
-    <a
+    <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+      whileHover={{ scale: 1.2, rotate: 5 }}
+      whileTap={{ scale: 0.9 }}
     >
       {getIcon(icon)}
-    </a>
+    </motion.a>
   );
 }

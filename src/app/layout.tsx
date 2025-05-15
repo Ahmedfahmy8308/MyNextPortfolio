@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Ahmed Fahmy - Software Engineer",
-  description: "Software Engineer specializing in back-end development, AI, and computer vision",
-  keywords: "Ahmed Fahmy, Software Engineer, Back-End Developer, AI, Computer Vision, .NET Core, Flutter"
+  description: "Software Engineer specializing in back-end development, .NET Core, Node.js, Nest.js, Flask, and Computer Vision.",
+  keywords: "Ahmed Fahmy, Software Engineer, Back-End Developer, AI, Computer Vision, .NET Core, React, Node.js, Nest.js, Flask ",
 };
 
 export default function RootLayout({

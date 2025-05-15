@@ -3,6 +3,36 @@
 
 @custom-variant dark (&:is(.dark *));
 
+ /* Add smooth theme transitions */
+:root {
+  --transition-duration: 400ms;
+}
+
+/* Apply transitions to body */
+body {
+  transition: background-color var(--transition-duration) ease, 
+              color var(--transition-duration) ease;
+}
+
+/* Apply transitions to all theme-related elements */
+*, *::before, *::after {
+  transition: background-color var(--transition-duration) ease,
+              border-color var(--transition-duration) ease,
+              color var(--transition-duration) ease,
+              fill var(--transition-duration) ease,
+              stroke var(--transition-duration) ease,
+              outline-color var(--transition-duration) ease,
+              box-shadow var(--transition-duration) ease;
+}
+
+/* Ensure component transitions don't conflict */
+.no-theme-transition, 
+.no-theme-transition *,
+.no-theme-transition *::before,
+.no-theme-transition *::after {
+  transition-property: none !important;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

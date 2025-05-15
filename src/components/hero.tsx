@@ -1,3 +1,6 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -6,7 +9,12 @@ export default function Hero() {
   return (
     <section id="home" className="py-20 flex flex-col items-center justify-center min-h-screen relative">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="flex flex-col gap-6 order-2 md:order-1">
+        <motion.div 
+          className="flex flex-col gap-6 order-2 md:order-1"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="flex space-x-4">
             <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
             <SocialLink href="https://www.instagram.com/a7medfahmy8" icon="instagram" />
@@ -16,26 +24,54 @@ export default function Hero() {
           </div>
           
           <div>
-            <h1 className="text-4xl font-bold mb-2">Hi!<span className="wave">👋</span>, I&apos;m Ahmed Fahmy</h1>
-            <h3 className="text-2xl mb-4">
+            <motion.h1 
+              className="text-4xl font-bold mb-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
+              Hi!<span className="wave">👋</span>, I&apos;m Ahmed Fahmy
+            </motion.h1>
+            <motion.h3 
+              className="text-2xl mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
               and I&apos;m <span className="text-primary auto-input"></span>
-            </h3>
-            <p className="text-muted-foreground mb-6">
+            </motion.h3>
+            <motion.p 
+              className="text-muted-foreground mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+            >
               A passionate Software Engineer with extensive experience in back-end 
               development and web APIs, delivering high-quality, user-focused solutions.
-            </p>
-            <Link href="#contact" passHref>
-              <Button size="lg" className="gap-2">
-                Contact Me
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                </svg>
-              </Button>
-            </Link>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              <Link href="#contact" passHref>
+                <Button size="lg" className="gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all">
+                  Contact Me
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                  </svg>
+                </Button>
+              </Link>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="order-1 md:order-2 flex justify-center">
+        <motion.div 
+          className="order-1 md:order-2 flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="relative w-64 h-64 md:w-80 md:h-80">
             <Image
               src="/me1.jpg"
@@ -45,15 +81,21 @@ export default function Hero() {
               priority
             />
           </div>
-        </div>
+        </motion.div>
       </div>
       
-      <Link href="#about" className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-        <span>Scroll Down</span>
-        <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </Link>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+      >
+        <Link href="#about" className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+          <span>Scroll Down</span>
+          <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </Link>
+      </motion.div>
     </section>
   );
 }
@@ -101,13 +143,15 @@ function SocialLink({ href, icon }: { href: string; icon: string }) {
   };
 
   return (
-    <a 
+    <motion.a 
       href={href} 
       target="_blank" 
       rel="noopener noreferrer" 
       className="text-muted-foreground hover:text-primary transition-colors"
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
     >
       {getIcon(icon)}
-    </a>
+    </motion.a>
   );
 }
