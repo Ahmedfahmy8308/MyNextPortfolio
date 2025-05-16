@@ -127,8 +127,7 @@ export function Navbar() {
             whileHover={{ width: '100%' }}
             transition={{ duration: 0.3 }}
           />
-        </Link>
-        <nav className="hidden md:flex items-center space-x-8">
+        </Link>        <nav className="hidden xl:flex items-center space-x-8">
           {['home', 'about', 'skills', 'services', 'projects', 'contact'].map((section) => (
             <Link
               key={section}
@@ -165,7 +164,7 @@ export function Navbar() {
         </nav>
         <div className="flex items-center gap-4 md:gap-4">          <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.6 }}>
             <ModeToggle />
-          </motion.div>          {/* Mobile FAB Navigation Menu - Positioned at top flush with right edge */}          <div className="md:hidden relative flex items-start justify-end -mr-1">
+          </motion.div>          {/* Mobile FAB Navigation Menu - Positioned at top flush with right edge */}          <div className="xl:hidden relative flex items-start justify-end -mr-1">
             {/* Main FAB Button - Hamburger Icon */}
             <Button
               variant="ghost"
@@ -265,7 +264,7 @@ export function Navbar() {
             </AnimatePresence>
           </div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button asChild className="hidden md:inline-flex" variant="outline">
+            <Button asChild className="hidden xl:inline-flex" variant="outline">
               <a href="/pdf/Cv.pdf" target="_blank" rel="noopener noreferrer">
                 Download CV
               </a>

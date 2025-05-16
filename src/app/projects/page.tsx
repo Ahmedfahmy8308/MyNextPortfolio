@@ -52,7 +52,7 @@ const projects: ProjectProps[] = [
     title: "Personal Portfolio",
     description: "A sleek, animated portfolio site built with modern web technologies.",
     link: "#",
-    github: "https://github.com/Ahmedfahmy8308/portfolio",
+    github: "https://github.com/Ahmedfahmy8308",
     categories: ['frontend'],
     technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript']
   },
