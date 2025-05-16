@@ -67,12 +67,16 @@ export function Navbar() {  const [isScrolled, setIsScrolled] = useState(false);
       className={headerClasses}
       initial="hidden"
       animate="visible"
-      variants={navVariants}    >      <div className="container mx-auto flex items-center justify-between px-8 md:px-14 lg:px-20">        <Link href="/" className="relative group">
+      variants={navVariants}    
+      >
+      <div className="container mx-auto flex items-center justify-between px-8 md:px-14 lg:px-20">        <Link href="/" className="relative group">
           <motion.div 
             whileHover={{ scale: 1.05 }} 
-            className="inline-flex items-center"
+            className="inline-flex items-center md:ml-16 lg:ml-32 xl:ml-28"
           >
-            <span className="font-bold text-xl">Eng Ahmed Fahmy</span>
+            <span className="font-extrabold text-xl md:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-lg tracking-tight transition-all duration-300">
+              Ahmed Fahmy
+            </span>
           </motion.div>
           <motion.div 
             className="absolute bottom-0 left-0 h-[2px] bg-primary"

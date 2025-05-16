@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic';
 import { motion } from "framer-motion";
 import { ScrollToTop } from '@/components/scroll-to-top';
@@ -12,10 +12,18 @@ const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  
+  const typedRef = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
-    if (typeof window !== 'undefined') {      
+    if (typeof window !== 'undefined') {
       document.documentElement.style.scrollBehavior = 'smooth';
+      const alreadyLoaded = sessionStorage.getItem('portfolioLoaded');
+      if (alreadyLoaded) {
+        setIsLoading(false);
+        return () => {
+          document.documentElement.style.scrollBehavior = '';
+        };
+      }
     }
     
     const initialize = async () => {
@@ -25,24 +33,6 @@ export default function Home() {
       document.head.appendChild(aosStyles);
       
       await new Promise(resolve => setTimeout(resolve, 800));
-      
-      try {
-        const Typed = (await import('typed.js')).default;
-        const element = document.querySelector('.auto-input');
-        if (element) {
-          new Typed(element, {
-            strings: [
-              "a Software Engineer ....",
-              "a student at Faculty of Computers and information ....",
-            ],
-            typeSpeed: 100,
-            backSpeed: 100,
-            loop: true,
-          });
-        }
-      } catch (error) {
-        console.error("Failed to load Typed.js", error);
-      }
       
       try {
         const AOS = (await import('aos')).default;
@@ -60,6 +50,9 @@ export default function Home() {
 
       setTimeout(() => {
         setIsLoading(false);
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('portfolioLoaded', 'true');
+        }
       }, 1000);
     };
     
@@ -69,6 +62,27 @@ export default function Home() {
       document.documentElement.style.scrollBehavior = '';
     };
   }, []);
+
+  useEffect(() => {
+    if (!isLoading && typedRef.current) {
+      let typed: import('typed.js').default | undefined;
+      (async () => {
+        const Typed = (await import('typed.js')).default;
+        typed = new Typed(typedRef.current!, {
+          strings: [
+            "a Software Engineer ....",
+            "a student at Faculty of Computers and information ....",
+          ],
+          typeSpeed: 100,
+          backSpeed: 100,
+          loop: true,
+        });
+      })();
+      return () => {
+        if (typed) typed.destroy();
+      };
+    }
+  }, [isLoading]);
 
   const pageVariants = {
     hidden: { opacity: 0 },
@@ -137,6 +151,14 @@ export default function Home() {
 
   return (
     <>
+      {/* Social Media Column Left - Static, not fixed, with vertical scroll bar if needed */}
+      <div className="absolute left-4 top-28 h-[70vh] flex flex-col gap-4 z-40 overflow-y-auto scrollbar-thin scrollbar-thumb-primary/60 scrollbar-track-transparent items-center">
+        <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
+        <SocialLink href="https://www.instagram.com/a7medfahmy8" icon="instagram" />
+        <SocialLink href="https://x.com/Ahmed_fahmy8308" icon="twitter" />
+        <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
+        <SocialLink href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" icon="linkedin" />
+      </div>
       {isLoading ? (
         <motion.div 
           key="loader"
@@ -177,19 +199,11 @@ export default function Home() {
         >              <section id="home" className="py-20 px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
               <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-8 md:px-14 lg:px-20">
                 <motion.div 
-                  className="flex flex-col gap-6 order-2 md:order-1"
+                  className="flex flex-col gap-6 order-2 md:order-1 xl:ml-28"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <div className="flex space-x-4">
-                    <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
-                    <SocialLink href="https://www.instagram.com/a7medfahmy8" icon="instagram" />
-                    <SocialLink href="https://x.com/Ahmed_fahmy8308" icon="twitter" />
-                    <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
-                    <SocialLink href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" icon="linkedin" />
-                  </div>
-                  
                   <div>
                     <motion.h1 
                       className="text-4xl font-bold mb-2"
@@ -205,7 +219,7 @@ export default function Home() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.6, duration: 0.8 }}
                     >
-                      and I&apos;m <span className="text-primary auto-input"></span>
+                      and I&apos;m <span ref={typedRef} className="text-primary auto-input"></span>
                     </motion.h3>
                     <motion.p 
                       className="text-muted-foreground mb-6"
@@ -213,8 +227,7 @@ export default function Home() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.9, duration: 0.8 }}
                     >
-                      A passionate Software Engineer with extensive experience in back-end 
-                      development and web APIs, delivering high-quality, user-focused solutions.
+                      Passionate Software Engineer with solid experience in backend development and building scalable APIs. I enjoy solving complex problems and have reached an advanced level in algorithmic thinking. Always eager to learn, build, and grow.
                     </motion.p>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -250,19 +263,6 @@ export default function Home() {
                   </div>
                 </motion.div>
               </div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
-              >
-                <Link href="/about" className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                  <span>Scroll Down</span>
-                  <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                </Link>
-              </motion.div>
             </section>
             <Footer />
             <ScrollToTop />

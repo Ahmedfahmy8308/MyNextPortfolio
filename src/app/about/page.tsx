@@ -42,8 +42,16 @@ export default function AboutPage() {
       <section className="py-24 px-6 md:px-10 lg:px-16 overflow-hidden">
         <div className="container mx-auto px-8 md:px-14 lg:px-20" data-aos="fade-up">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">About Me</h2>
-            <p className="text-muted-foreground">My Introduction</p>
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+              <span className="inline-block align-middle">About Me
+</span>
+            </h2>
+            <div className="flex justify-center mb-4">
+              <span className="inline-block w-24 h-1 rounded-full bg-gradient-to-r from-primary to-secondary opacity-70 animate-pulse"></span>
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground font-medium italic animate-fade-in">
+              Introduction
+            </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -73,14 +81,13 @@ export default function AboutPage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                Hi, I&apos;m Ahmed Fahmy, a Software Engineer passionate about creating secure, dynamic, 
-                and user-friendly digital experiences. With expertise in .NET Core, NEST Nodejs,
-                back-end development, front-end technologies, also have good experience in problem-solving,
-                I specialize in building scalable and efficient solutions.
-                I also have a strong interest in AI and computer vision, 
-                where I&apos;ve led several innovative projects. 
-                I&apos;m eager to contribute to impactful projects, 
-                explore new technologies, and collaborate on open-source initiatives.
+              Hi, I&apos;m Ahmed Fahmy — a Software Engineer driven by a passion for crafting secure, scalable, and engaging digital experiences.
+              I&apos;m highly skilled in back-end frameworks like .NET Core, NestJS, Node.js, and Flask, and I also build sleek front-ends using React and Tailwind CSS.
+
+              I&apos;m an experienced problem solver, with a strong background in algorithms and competitive programming.
+              I have a growing passion for AI and computer vision, having led multiple innovative projects in these fields.
+
+              <br/>Always eager to contribute to impactful solutions, explore emerging technologies, and collaborate on open-source and real-world tech initiatives
               </motion.p>
               
               <div className="grid grid-cols-2 gap-6 mb-8">
@@ -110,6 +117,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
+                className="flex justify-center"
               >
                 <Button asChild className="gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all">
                   <a href="/pdf/Cv.pdf" download>

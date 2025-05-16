@@ -1,137 +1,44 @@
 'use client';
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function Footer() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { 
-        type: "spring", 
-        stiffness: 100 
-      }
-    }
-  };
-  const linkVariants = {
-    initial: { x: 0 },
-    hover: { 
-      x: 5, 
-      transition: { duration: 0.2 } 
-    }
-  };
-
-  const borderVariants = {
-    hidden: { width: 0 },
-    visible: { 
-      width: "100%",
-      transition: { 
-        duration: 0.8,
-        delay: 0.5
-      }
-    }
-  };
-
-  return (    <footer className="bg-primary text-primary-foreground pt-16 pb-6 px-6 md:px-10 lg:px-16">
-      <motion.div 
-        className="container mx-auto px-8 md:px-14 lg:px-20"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-      >
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10"
-          variants={containerVariants}
-        >
-          <motion.div variants={itemVariants}>
-            <motion.h2 
-              className="text-2xl font-bold mb-2"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              Ahmed Fahmy
-            </motion.h2>
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "40px" }}
-              transition={{ delay: 0.4, duration: 0.4 }}
-              className="h-1 bg-primary-foreground/50 mb-3"
-            />
-            <motion.p 
-              className="text-primary-foreground/80"
-              variants={itemVariants}
-            >
-              Software Engineer
-            </motion.p>
-          </motion.div>
-          
-          <motion.div variants={itemVariants}>
-            <motion.h3 
-              className="text-lg font-medium mb-4 relative inline-block"
-              variants={itemVariants}
-            >
+  return (
+    <footer className="bg-primary text-primary-foreground pt-16 pb-6 px-6 md:px-10 lg:px-16">
+      <div className="container mx-auto px-8 md:px-14 lg:px-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+          <div>
+            <h2 className="text-2xl font-bold mb-2">Ahmed Fahmy</h2>
+            <div className="h-1 bg-primary-foreground/50 mb-3 w-10" />
+            <p className="text-primary-foreground/80">Software Engineer</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-4 relative inline-block">
               Quick Links
-              <motion.div
-                className="absolute -bottom-1 left-0 h-0.5 bg-primary-foreground/50"
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-              />
-            </motion.h3>
+              <div className="absolute -bottom-1 left-0 h-0.5 bg-primary-foreground/50 w-full" />
+            </h3>
             <ul className="space-y-3">
-              {['services', 'portfolio', 'contact'].map((item) => (
-                <motion.li key={item} variants={itemVariants}>
-                  <motion.div
-                    variants={linkVariants}
-                    initial="initial"
-                    whileHover="hover"                  >
-                    <Link 
-                      href={item === 'portfolio' ? '/projects' : `/${item}`} 
-                      className="text-primary-foreground/80 hover:text-primary-foreground transition-colors flex items-center gap-2"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                      </svg>
-                      {item.charAt(0).toUpperCase() + item.slice(1)}
-                    </Link>
-                  </motion.div>
-                </motion.li>
+              {['home', 'about', 'skills', 'services', 'projects', 'contact'].map((section) => (
+                <li key={section}>
+                  <Link 
+                    href={section === 'home' ? '/' : `/${section}`}
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors flex items-center gap-2"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </Link>
+                </li>
               ))}
             </ul>
-          </motion.div>
-          
-          <motion.div variants={itemVariants}>
-            <motion.h3 
-              className="text-lg font-medium mb-4 relative inline-block"
-              variants={itemVariants}
-            >
+          </div>
+          <div>
+            <h3 className="text-lg font-medium mb-4 relative inline-block">
               Connect
-              <motion.div
-                className="absolute -bottom-1 left-0 h-0.5 bg-primary-foreground/50"
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-              />
-            </motion.h3>
-            <motion.div 
-              className="flex flex-wrap gap-4"
-              variants={containerVariants}
-            >
+              <div className="absolute -bottom-1 left-0 h-0.5 bg-primary-foreground/50 w-full" />
+            </h3>
+            <div className="flex flex-wrap gap-4">
               <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
               <SocialLink href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" icon="linkedin" />
               <SocialLink href="https://www.instagram.com/a7medfahmy8/" icon="instagram" />
@@ -139,24 +46,15 @@ export default function Footer() {
               <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
               <SocialLink href="https://www.facebook.com/A7medfahmy8?locale=ar_AR" icon="facebook" />
               <SocialLink href="https://www.youtube.com/FahmyCodeHub" icon="youtube" />
-            </motion.div>
-          </motion.div>
-        </motion.div>
-        
-        <motion.div 
-          className="border-t border-primary-foreground/20 pt-6 text-center"
-          variants={borderVariants}
-        >
-          <motion.p 
-            className="text-primary-foreground/70"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-primary-foreground/20 pt-6 text-center">
+          <p className="text-primary-foreground/70">
             &copy; {new Date().getFullYear()} Ahmed Fahmy | All Rights Reserved
-          </motion.p>
-        </motion.div>
-      </motion.div>
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }
@@ -212,15 +110,13 @@ function SocialLink({ href, icon }: { href: string; icon: string }) {
   };
 
   return (
-    <motion.a
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-      whileHover={{ scale: 1.2, rotate: 5 }}
-      whileTap={{ scale: 0.9 }}
     >
       {getIcon(icon)}
-    </motion.a>
+    </a>
   );
 }
