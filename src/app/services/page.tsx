@@ -1,5 +1,7 @@
 'use client';
 
+import React, { useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,13 +12,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ScrollToTop } from '@/components/scroll-to-top';
 
-type ServiceProps = {
-  icon: string;
-  title: string;
-  description: string[];
-  modalTitle: string;
-};
+// Import components with dynamic loading
+const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
 const services: ServiceProps[] = [
   {
@@ -109,7 +108,7 @@ function ServiceCard({ service }: { service: ServiceProps }) {
         </ul>
         <div className="mt-6 text-center">
           <Button asChild>
-            <a href="#contact">Request Service</a>
+            <a href="/contact">Request Service</a>
           </Button>
         </div>
       </DialogContent>
@@ -148,7 +147,7 @@ function getIcon(iconName: string) {
   }
 }
 
-export default function Services() {
+export default function ServicesPage() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -169,28 +168,60 @@ export default function Services() {
     }
   };
 
+  useEffect(() => {
+    const initAOS = async () => {
+      try {
+        const AOS = (await import('aos')).default;
+        AOS.refresh();
+      } catch (error) {
+        console.error("Failed to refresh AOS", error);
+      }
+    };
+    
+    initAOS();
+  }, []);
+
+  const pageVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeInOut" }
+    },
+    exit: { opacity: 0, transition: { duration: 0.3 } }
+  };
+
   return (
-    <section id="services" className="py-20">
-      <div className="container mx-auto" data-aos="fade-up">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2">Services</h2>
-          <p className="text-muted-foreground">What I offer</p>
+    <motion.main
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageVariants}
+    >
+      <section className="py-24 px-6 md:px-10 lg:px-16 overflow-hidden">
+        <div className="container mx-auto px-8 md:px-14 lg:px-20" data-aos="fade-up">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-2">Services</h2>
+            <p className="text-muted-foreground">What I offer</p>
+          </div>
+          
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {services.map((service, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <ServiceCard service={service} />
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-        
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {services.map((service, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <ServiceCard service={service} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+      <ScrollToTop />
+    </motion.main>
   );
 }
+

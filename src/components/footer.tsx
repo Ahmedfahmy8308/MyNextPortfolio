@@ -45,10 +45,9 @@ export default function Footer() {
     }
   };
 
-  return (
-    <footer className="bg-primary text-primary-foreground pt-16 pb-6">
+  return (    <footer className="bg-primary text-primary-foreground pt-16 pb-6 px-6 md:px-10 lg:px-16">
       <motion.div 
-        className="container mx-auto"
+        className="container mx-auto px-8 md:px-14 lg:px-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -100,10 +99,9 @@ export default function Footer() {
                   <motion.div
                     variants={linkVariants}
                     initial="initial"
-                    whileHover="hover"
-                  >
+                    whileHover="hover"                  >
                     <Link 
-                      href={`#${item}`} 
+                      href={item === 'portfolio' ? '/projects' : `/${item}`} 
                       className="text-primary-foreground/80 hover:text-primary-foreground transition-colors flex items-center gap-2"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

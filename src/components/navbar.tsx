@@ -1,36 +1,29 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ModeToggle } from "./mode-toggle";
 
-export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');  const [, setMounted] = useState(false);
+export function Navbar() {  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');  
+  const [, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  // After mounting, we can safely show the UI
   useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    let section = pathname === '/' ? 'home' : pathname.substring(1);
+    if (!section) section = 'home';
+    setActiveSection(section);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
-      // Calculate active section based on scroll position
-      const sections = ['home', 'about', 'services', 'portfolio', 'contact'];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      }) || 'home';
-      
-      setActiveSection(current);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -74,13 +67,13 @@ export function Navbar() {
       className={headerClasses}
       initial="hidden"
       animate="visible"
-      variants={navVariants}
-    >
-      <div className="container mx-auto flex items-center justify-between px-4">
-        <Link href="#home" className="font-bold text-xl relative group">
-          <motion.span whileHover={{ scale: 1.05 }} className="inline-block">
-            Ahmed Fahmy
-          </motion.span>
+      variants={navVariants}    >      <div className="container mx-auto flex items-center justify-between px-8 md:px-14 lg:px-20">        <Link href="/" className="relative group">
+          <motion.div 
+            whileHover={{ scale: 1.05 }} 
+            className="inline-flex items-center"
+          >
+            <span className="font-bold text-xl">Eng Ahmed Fahmy</span>
+          </motion.div>
           <motion.div 
             className="absolute bottom-0 left-0 h-[2px] bg-primary"
             initial={{ width: 0 }}
@@ -88,12 +81,11 @@ export function Navbar() {
             transition={{ duration: 0.3 }}
           />
         </Link>
-        
-        <nav className="hidden md:flex items-center space-x-8">
-          {['home', 'about', 'services', 'portfolio', 'contact'].map((section) => (
+          <nav className="hidden md:flex items-center space-x-8">
+          {['home', 'about', 'skills', 'services', 'projects', 'contact'].map((section) => (
             <Link 
               key={section}
-              href={`#${section}`}
+              href={section === 'home' ? '/' : `/${section}`}
               className="relative group py-2"
             >
               <motion.span 
@@ -164,16 +156,15 @@ export function Navbar() {
             <SheetContent side="right" className="w-[250px] sm:w-[300px]">
               <div className="flex flex-col gap-8 mt-10">
                 <AnimatePresence>
-                  {['home', 'about', 'services', 'portfolio', 'contact'].map((section, index) => (
+                  {['home', 'about','skills','services', 'projects', 'contact'].map((section, index) => (
                     <motion.div
                       key={section}
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 50 }}
-                      transition={{ delay: index * 0.1 }}
+                      exit={{ opacity: 0, x: 50 }}                      transition={{ delay: index * 0.1 }}
                     >
                       <Link
-                        href={`#${section}`}
+                        href={section === 'home' ? '/' : `/${section}`}
                         className={`text-lg font-medium hover:text-primary transition-colors flex items-center gap-2 py-2 ${
                           activeSection === section ? 'text-primary' : ''
                         }`}
@@ -221,13 +212,19 @@ function getNavIcon(section: string) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       );
+    case 'skills':
+      return (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      );
     case 'services':
       return (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       );
-    case 'portfolio':
+    case 'projects':
       return (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />

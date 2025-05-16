@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
+import { AppPageTransition } from "@/components/AppPageTransition";
+import { ScrollToTopOnNavigation } from "@/components/scroll-to-top-on-navigation";
 import { Toaster } from "sonner";
 
 const geistSans = Geist({
@@ -40,8 +42,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* Component to enable smooth scrolling */}
           <Navbar />
-          {children}
+          <ScrollToTopOnNavigation />
+          <AppPageTransition>
+            {children}
+          </AppPageTransition>
           <Toaster position="top-right" />
         </ThemeProvider>
       </body>
