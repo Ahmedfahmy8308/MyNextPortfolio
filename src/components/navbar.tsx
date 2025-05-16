@@ -192,7 +192,7 @@ export function Navbar() {
             </Button>            {/* Floating Menu Items */}
             <AnimatePresence>              
               {isFabOpen && (                  <div className="absolute top-full right-0 z-40 fab-menu" onClick={() => setIsFabOpen(false)}>
-                  <div className="flex flex-row flex-wrap justify-end gap-2 p-1.5 pr-0 mt-2 mr-[-4px]" onClick={(e) => e.stopPropagation()}>{['home', 'about', 'skills', 'services', 'projects', 'contact'].map((section, i) => (
+                  <div className="flex flex-row flex-wrap justify-end gap-2 p-2 mt-2 mr-[-4px] bg-background/95 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200/20 dark:border-gray-800/40" onClick={(e) => e.stopPropagation()}>{['home', 'about', 'skills', 'services', 'projects', 'contact'].map((section, i) => (
                       <motion.div
                         key={section}
                         custom={i + 1}
@@ -206,14 +206,16 @@ export function Navbar() {
                           href={section === 'home' ? '/' : `/${section}`}
                           onClick={() => setIsFabOpen(false)}
                           className="flex flex-col items-center"
-                        >                          <motion.div
+                        >
+                          <motion.div
                             className={`size-7 rounded-md flex items-center justify-center 
                                       ${activeSection === section ? 'bg-gradient-to-r from-primary to-secondary text-white scale-125 z-10' : 'bg-white dark:bg-gray-800 text-primary'}`}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                           >
                             {getNavIcon(section)}
-                          </motion.div>                          <motion.div
+                          </motion.div>
+                          <motion.div
                             className={`px-1 py-0.5 rounded-md text-xs mt-0.5 ${activeSection === section ? 'font-bold' : 'font-medium'}`}
                             initial={{ opacity: 0, y: -5 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -243,12 +245,16 @@ export function Navbar() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="flex flex-col items-center"
-                      >                        <motion.div
-                          className="size-8 rounded-md flex items-center justify-center"
-                        ><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        aria-label="Download CV"
+                      >
+                        <motion.div
+                          className="size-8 rounded-md flex items-center justify-center bg-white/90 dark:bg-gray-800/90 shadow-sm"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
-                        </motion.div>                        <motion.div
+                        </motion.div>
+                        <motion.div
                           className="px-1 py-0.5 rounded-md text-xs mt-0.5"
                           initial={{ opacity: 0, y: -5 }}
                           animate={{ opacity: 1, y: 0 }}

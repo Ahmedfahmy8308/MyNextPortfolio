@@ -398,21 +398,20 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <div>                    
-                  <motion.h1                    
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white dark:text-white leading-tight"
+                <div>                      <motion.h1                    
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-blue-600 dark:from-indigo-400 dark:to-blue-400 leading-tight"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.8 }}>  
                     Ahmed Fahmy
-                  </motion.h1>                  
+                  </motion.h1>
                   <motion.h3 
                     className="text-2xl mb-4 font-medium flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                   >
-                  <span ref={typedRef} className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-300 font-bold auto-input text-base sm:text-lg md:text-xl lg:text-2xl"></span>
+                  <span ref={typedRef} className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-500 to-indigo-500 dark:from-indigo-400 dark:via-blue-400 dark:to-indigo-300 font-bold auto-input text-base sm:text-lg md:text-xl lg:text-2xl"></span>
                   </motion.h3>
                     <motion.div
                     className="relative mb-8"
@@ -420,25 +419,23 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8, duration: 0.8 }}
                   >
-                    <div className="absolute left-0 w-20 h-1 bg-gradient-to-r from-indigo-700 to-blue-600 dark:from-indigo-500 dark:to-blue-400 rounded-full"></div>
+                    <div className="absolute left-0 w-20 h-1 bg-gradient-to-r from-indigo-700 to-blue-600 dark:from-indigo-500 dark:to-blue-400 rounded-full shadow-sm"></div>
                   </motion.div>
-                  
-                  <motion.p 
+                    <motion.p 
                     className="text-muted-foreground mb-6 text-base leading-relaxed"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.9, duration: 0.8 }}                  >                    <span className="font-medium text-indigo-600 dark:text-indigo-400">Full-Stack Developer</span> specializing in building exceptional digital experiences.
-                    With expertise in <span className="font-medium text-indigo-600 dark:text-indigo-400">backend development</span> and 
-                    <span className="font-medium text-indigo-600 dark:text-indigo-400"> scalable APIs</span>.
+                    transition={{ delay: 0.9, duration: 0.8 }}                  >                    <span className="font-medium text-indigo-700 dark:text-indigo-400">Full-Stack Developer</span> specializing in building exceptional digital experiences.
+                    With expertise in <span className="font-medium text-indigo-700 dark:text-indigo-400">backend development</span> and 
+                    <span className="font-medium text-indigo-700 dark:text-indigo-400"> scalable APIs</span>.
                     My passion lies in solving complex technical challenges through elegant solutions, 
                     approaching each project with a keen eye for design and performance optimization.
-                  </motion.p>                  <motion.div
+                  </motion.p><motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
                     className="flex gap-4"
-                  >                    <Link href="/contact" passHref>
-                      <Button size="lg" className="gap-2 hover:shadow-xl hover:translate-y-[-3px] transition-all bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-md">
+                  >                    <Link href="/contact" passHref>                      <Button size="lg" className="gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-md">
                         Contact Me
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -467,25 +464,22 @@ export default function Home() {
                   }}
                 />
                   <div className="relative">
-                  {/* Rotating circle decoration */}
-                  <motion.div
-                    className="absolute -z-1 inset-[-10px] rounded-full border-2 border-dashed border-indigo-600/30 dark:border-indigo-400/30"
+                  {/* Rotating circle decoration */}                  <motion.div
+                    className="absolute -z-1 inset-[-10px] rounded-full border-2 border-dashed border-indigo-700/30 dark:border-indigo-500/30"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   />
                   
-                  {/* Main image */}                  <div className="relative w-64 h-64 md:w-80 md:h-80">
-                    <Image
+                  {/* Main image */}                  <div className="relative w-64 h-64 md:w-80 md:h-80">                    <Image
                       src="/me1.jpg"
                       alt="Ahmed Fahmy profile picture"
                       fill
-                      className="object-cover rounded-full border-4 border-indigo-600/80 dark:border-indigo-400/80 p-1"
+                      className="object-cover rounded-full border-4 border-indigo-700/80 dark:border-indigo-500/80 p-1 shadow-md"
                       priority
                     />
                     
-                    {/* Highlight effect */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-600/40 dark:from-indigo-400/40 to-transparent"
+                    {/* Highlight effect */}                    <motion.div
+                      className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-700/40 dark:from-indigo-500/40 to-transparent"
                       animate={{ 
                         opacity: [0, 0.4, 0],
                         rotate: [0, 360]
