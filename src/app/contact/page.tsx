@@ -93,7 +93,7 @@ export default function ContactPage() {
       exit="exit"
       variants={pageVariants}
     >
-      <section className="section py-24 px-6 md:px-10 lg:px-16 overflow-hidden relative">
+      <section className="py-24 px-6 md:px-10 lg:px-16  overflow-hidden">
           {/* Background decoration elements */}
           <div className="absolute top-20 right-0 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
           <div className="absolute bottom-20 left-0 w-72 h-72 bg-secondary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
@@ -110,7 +110,7 @@ export default function ContactPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
               <motion.div 
-                className="md:col-span-1 space-y-8 card"
+                className="md:col-span-1 space-y-8 "
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}

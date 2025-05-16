@@ -196,11 +196,16 @@ export default function SkillsPage() {
       exit="exit"
       variants={pageVariants}
     >
-      <section className="py-24 px-6 md:px-10 lg:px-16 overflow-hidden">
+      <section className="py-24 px-6 md:px-10 lg:px-16  overflow-hidden">
         <div className="container mx-auto px-8 md:px-14 lg:px-20" data-aos="fade-up">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">Skills</h2>
-            <p className="text-muted-foreground">My Technical Proficiency</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 section-heading">
+                <span className="inline-block align-middle bg-gradient-to-r from-primary to-indigo-400 bg-clip-text text-transparent">Skills</span>
+              </h2>
+              <div className="flex justify-center mb-4">
+                <span className="inline-block w-20 h-1 rounded-full bg-gradient-to-r from-primary to-secondary opacity-70 animate-pulse"></span>
+              </div>
+              <p className="text-muted-foreground">My Technical Proficiency</p>
           </div>
           
           <div className="flex justify-center mb-8">

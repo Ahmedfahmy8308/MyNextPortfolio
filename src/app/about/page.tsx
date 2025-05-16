@@ -39,10 +39,9 @@ export default function AboutPage() {
         animate="visible"
         exit="exit"
         variants={pageVariants}
-      >        <section className="section pt-16 md:pt-24 pb-6 md:pb-10 px-4 md:px-10 lg:px-16 overflow-hidden relative">
+      >       
+        <section className="py-24 px-6 md:px-10 lg:px-16  overflow-hidden">
           {/* Background decoration elements */}
-          <div className="absolute top-20 right-0 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
-          <div className="absolute bottom-20 left-0 w-72 h-72 bg-secondary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
           
           <div className="container mx-auto px-4 md:px-14 lg:px-20 relative" data-aos="fade-up"><div className="text-center mb-12">
               <h2 className="text-2xl md:text-5xl font-extrabold mb-4 section-heading">
@@ -62,7 +61,7 @@ export default function AboutPage() {
               </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">              
                 <motion.div 
-                  className="flex justify-center card"
+                  className="flex justify-center card w-full max-w-[250px] sm:max-w-md mx-auto"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
@@ -81,52 +80,53 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </motion.div>
-                  <motion.div
+
+                <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <motion.div 
-  className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-6 space-y-4 sm:space-y-6 leading-relaxed"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-><p>
-    Hey there! 👋 I&apos;m <span className="text-primary font-bold">Ahmed Fahmy</span>, a passionate <span className="font-semibold">Software Engineer</span> who thrives on building 
-    <span className="text-blue-600 dark:text-blue-400 font-medium"> secure, scalable</span>, and <span className="text-blue-600 dark:text-blue-400 font-medium">engaging</span> digital solutions.
-  </p>
+                    className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-6 space-y-4 sm:space-y-6 leading-relaxed"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+                  ><p>
+                      Hey there! 👋 I&apos;m <span className="text-primary font-bold">Ahmed Fahmy</span>, a passionate <span className="font-semibold">Software Engineer</span> who thrives on building 
+                      <span className="text-blue-600 dark:text-blue-400 font-medium"> secure, scalable</span>, and <span className="text-blue-600 dark:text-blue-400 font-medium">engaging</span> digital solutions.
+                    </p>
 
-  <p>
-    I specialize in back-end development using <span className="text-blue-600 dark:text-blue-400 font-semibold">.NET Core</span>, 
-    <span className="text-blue-600 dark:text-blue-400 font-semibold"> NestJS</span>, <span className="text-blue-600 dark:text-blue-400 font-semibold">Node.js</span>, and <span className="text-blue-600 dark:text-blue-400 font-semibold">Flask</span>. 
-    On the front-end, I craft sleek interfaces with <span className="text-blue-600 dark:text-blue-400 font-semibold">React</span> and <span className="text-blue-600 dark:text-blue-400 font-semibold">Tailwind CSS</span>.
-  </p>
+                    <p>
+                      I specialize in back-end development using <span className="text-blue-600 dark:text-blue-400 font-semibold">.NET Core</span>, 
+                      <span className="text-blue-600 dark:text-blue-400 font-semibold"> NestJS</span>, <span className="text-blue-600 dark:text-blue-400 font-semibold">Node.js</span>, and <span className="text-blue-600 dark:text-blue-400 font-semibold">Flask</span>. 
+                      On the front-end, I craft sleek interfaces with <span className="text-blue-600 dark:text-blue-400 font-semibold">React</span> and <span className="text-blue-600 dark:text-blue-400 font-semibold">Tailwind CSS</span>.
+                    </p>
 
-  <p>
-    With a strong foundation in <span className="text-blue-600 dark:text-blue-400 font-medium">algorithms and competitive programming</span>, 
-    I enjoy solving complex problems efficiently and creatively.
-  </p>
+                    <p>
+                      With a strong foundation in <span className="text-blue-600 dark:text-blue-400 font-medium">algorithms and competitive programming</span>, 
+                      I enjoy solving complex problems efficiently and creatively.
+                    </p>
 
-  <p>
-    I&apos;m also diving deeper into <span className="text-blue-600 dark:text-blue-400 font-semibold">AI and Computer Vision</span>, having led several exciting projects that push boundaries and drive innovation.
-  </p>
+                    <p>
+                      I&apos;m also diving deeper into <span className="text-blue-600 dark:text-blue-400 font-semibold">AI and Computer Vision</span>, having led several exciting projects that push boundaries and drive innovation.
+                    </p>
 
-  <p>
-    Always open to collaboration on <span className="text-primary font-semibold">real-world tech initiatives</span>, open-source contributions, and impactful solutions.
-    Let&apos;s build something great together!
-  </p>
-</motion.div>
+                    <p>
+                      Always open to collaboration on <span className="text-primary font-semibold">real-world tech initiatives</span>, open-source contributions, and impactful solutions.
+                      Let&apos;s build something great together!
+                    </p>
+                  </motion.div>
 
-                      <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-6">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-6">
                     <motion.div 
-                      className="text-center p-3 sm:p-4 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow card"
-                      whileHover={{ y: -5 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
-                    >
-                      <p className="text-2xl sm:text-3xl font-bold text-primary">03+</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Years <br />Experience</p>
+                        className="text-center p-3 sm:p-4 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow card"
+                        whileHover={{ y: -5 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                      >
+                        <p className="text-2xl sm:text-3xl font-bold text-primary">03+</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">Years <br />Experience</p>
                     </motion.div>
                     <motion.div 
                       className="text-center p-3 sm:p-4 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow card"
@@ -145,7 +145,8 @@ export default function AboutPage() {
           </div>
         </section>
         
-        {/* Education Section - Completely separate */}        <section className="section py-12 md:py-20 px-4 md:px-10 lg:px-16 overflow-hidden relative bg-muted/20">
+        {/* Education Section - Completely separate */}        
+        <section className="py-24 px-6 md:px-10 lg:px-16  overflow-hidden">
           {/* Background decoration elements */}
           <div className="absolute top-20 left-0 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
           <div className="absolute bottom-20 right-0 w-72 h-72 bg-secondary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
