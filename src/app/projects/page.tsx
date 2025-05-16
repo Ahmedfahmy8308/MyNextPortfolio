@@ -28,7 +28,7 @@ type ProjectProps = {
 const projects: ProjectProps[] = [
   {
     id: "IPA-Website",
-    image: "/projects/IPA.jpg",
+    image: "/Projects/IPA.jpg",
     title: "IPA Academy Website",
     description: "The IPA Academy website is a platform for students to learn and grow in the field of programming.", 
     link: "https://ipaegy.com/",
@@ -37,18 +37,8 @@ const projects: ProjectProps[] = [
     technologies: ['.NET API', 'SQL Server', 'React', 'Tailwind CSS']
   },
   {
-    id: "Wasla API",
-    image: "/projects/Wasla.jpg",
-    title: "Wasla API",
-    description: "The Wasla API is an API for travel and tourism services, providing a seamless experience for users.",
-    link: "https://github.com/Ahmedfahmy8308/Wasla-Api",
-    github: "https://github.com/Ahmedfahmy8308/Wasla-Api",
-    categories: ['backend'],
-    technologies: ['.NET API', 'SQL Server', 'Swagger', 'JWT Authentication']
-  },
-  {
     id: "IEEE Website",
-    image: "/projects/IEEE.jpg",
+    image: "/Projects/IEEE.jpg",
     title: "IEEE API",
     description: "The IEEE API is a backend service for managing IEEE KSB events and members.",
     link: "https://ieee-ksb.com/",
@@ -57,8 +47,28 @@ const projects: ProjectProps[] = [
     technologies: ['NestJs' , 'MongoDB', 'Swagger', 'JWT Authentication']
   },
   {
+    id: "portfolio-site",
+    image: "/Projects/portfolio.jpg",
+    title: "Personal Portfolio",
+    description: "A sleek, animated portfolio site built with modern web technologies.",
+    link: "#",
+    github: "https://github.com/Ahmedfahmy8308/portfolio",
+    categories: ['frontend'],
+    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript']
+  },
+  {
+    id: "Wasla API",
+    image: "/Projects/Wasla.jpg",
+    title: "Wasla API",
+    description: "The Wasla API is an API for travel and tourism services, providing a seamless experience for users.",
+    link: "https://github.com/Ahmedfahmy8308/Wasla-Api",
+    github: "https://github.com/Ahmedfahmy8308/Wasla-Api",
+    categories: ['backend'],
+    technologies: ['.NET API', 'SQL Server', 'Swagger', 'JWT Authentication']
+  },
+  {
     id: "faculty-management",
-    image: "/projects/faculty-management.jpg",
+    image: "/Projects/faculty-management.jpg",
     title: "Faculty Management System",
     description: "The Faculty Management System is a comprehensive platform built to streamline university operations also login and take attendance with face recognition.",
     link: "https://github.com/Ahmedfahmy8308/Faculty-Management-System-website",
@@ -68,7 +78,7 @@ const projects: ProjectProps[] = [
   },
   {
     id: "elmansa",
-    image: "/projects/Elmansa.png",
+    image: "/Projects/Elmansa.png",
     title: "Elmansa",
     description: "Elmanssa is a comprehensive software solution for teachers to manage educational activities effectively.",
     link: "https://github.com/Ahmedfahmy8308/Elmansa",
@@ -77,18 +87,8 @@ const projects: ProjectProps[] = [
     technologies: ['.Net API ', 'Sql Server', 'Bootstrap', 'Html' , 'Js' , ]
   },
   {
-    id: "portfolio-site",
-    image: "/projects/portfolio.jpg",
-    title: "Personal Portfolio",
-    description: "A sleek, animated portfolio site built with modern web technologies.",
-    link: "#",
-    github: "https://github.com/Ahmedfahmy8308/portfolio",
-    categories: ['frontend'],
-    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'TypeScript']
-  },
-  {
     id: "Faculty-management-system-Desktop",
-    image: "/projects/Faculty-management-system-Desktop.jpg", 
+    image: "/Projects/Faculty-management-system-Desktop.jpg", 
     title: "Faculty Management System (Desktop)",
     description: "A desktop application for managing faculty and student records, attendance, and grades. and take attendance with face recognition.",
     link: "https://github.com/Ahmedfahmy8308/Faculty-management-system-Desktop",
@@ -98,16 +98,17 @@ const projects: ProjectProps[] = [
   },
   {
     id: "Student-management-system",
-    image: "/projects/Student-management-system.jpg", 
+    image: "/Projects/Student-management-system.jpg", 
     title: "Student Management System",
     description: "Create a comprehensive Student Management System using Python, Tkinter for the graphical user interface, and MySQL for database management.",
     link: "https://github.com/Ahmedfahmy8308/Student-management-system",
     github: "https://github.com/Ahmedfahmy8308/Student-management-system",
     categories: [ 'desktop'],
     technologies: ['Python',  'Tkinter', 'MySQL' ]
-  },  {
+  },  
+  {
     id: "Elgad",
-    image: "/projects/Elgad.jpg", 
+    image: "/Projects/Elgad.jpg", 
     title: "Elgad",
     description: "A professional website developed for a client specializing in kitchen and aluminum manufacturing to showcase their work and products attractively to potential customers. The site includes an interactive portfolio with an easy-to-use content management system.",
     link: "https://elgad.runasp.net/",
