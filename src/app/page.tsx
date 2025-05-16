@@ -444,7 +444,7 @@ export default function Home() {
                     className="text-muted-foreground mb-6 text-base leading-relaxed"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.9, duration: 0.8 }}                  >                    <span className="font-medium text-indigo-700 dark:text-indigo-400">Full-Stack Developer</span> specializing in building exceptional digital experiences.
+                    transition={{ delay: 0.9, duration: 0.8 }}                  >                    <span className="font-medium text-indigo-700 dark:text-indigo-400">Back-End Developer</span> specializing in building exceptional digital experiences.
                     With expertise in <span className="font-medium text-indigo-700 dark:text-indigo-400">backend development</span> and 
                     <span className="font-medium text-indigo-700 dark:text-indigo-400"> scalable APIs</span>.
                     My passion lies in solving complex technical challenges through elegant solutions, 
