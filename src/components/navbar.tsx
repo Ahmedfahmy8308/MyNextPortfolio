@@ -67,25 +67,13 @@ export function Navbar() {
       transition: { duration: 0.2 }
     }
   };
-
   const activeIndicator = {
     initial: { width: 0 },
     animate: { 
       width: '100%',
       transition: { duration: 0.3, ease: "easeInOut" }
     }
-  };  const fabVariants = {
-  open: {
-    rotate: 0,
-    boxShadow: '0 3px 15px rgba(79, 70, 229, 0.4)',
-    scale: 1.1,
-  },
-  closed: {
-    rotate: 0,
-    boxShadow: '0 2px 8px rgba(79, 70, 229, 0.3)',
-    scale: 1,
-  },
-};
+  };
   const menuItemVariants = {
     open: (i: number) => ({
       opacity: 1,

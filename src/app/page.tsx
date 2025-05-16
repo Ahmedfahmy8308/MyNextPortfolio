@@ -86,9 +86,9 @@ export default function Home() {
         const Typed = (await import('typed.js')).default;
         typed = new Typed(typedRef.current!, {
           strings: [
-            "a Software Engineer ....",
-            "a Back-End Developer ....",
-            "a student at Faculty of Computers and information ....",
+            "a Software Engineer ",
+            "a Back-End Developer ",
+            "a student at Faculty of Computers and information ",
           ],          
           typeSpeed: 50,
           backSpeed: 40,
