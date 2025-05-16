@@ -10,6 +10,25 @@ import { Button } from "@/components/ui/button";
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
+// Use hardcoded fixed values that match exactly between server and client rendering
+const backgroundParticles = [
+  { width: '91px', height: '152px', top: '38%', left: '4%', xMovement: 20, yMovement: 30 },
+  { width: '146px', height: '100px', top: '94%', left: '40%', xMovement: -25, yMovement: -15 },
+  { width: '120px', height: '74px', top: '54%', left: '10%', xMovement: 15, yMovement: -20 },
+  { width: '154px', height: '121px', top: '10%', left: '11%', xMovement: -10, yMovement: 25 },
+  { width: '109px', height: '92px', top: '77%', left: '56%', xMovement: 5, yMovement: -30 },
+  { width: '143px', height: '61px', top: '11%', left: '6%', xMovement: -15, yMovement: 10 },
+  { width: '83px', height: '149px', top: '61%', left: '46%', xMovement: 30, yMovement: -5 },
+  { width: '138px', height: '143px', top: '94%', left: '11%', xMovement: -20, yMovement: 15 },
+  { width: '60px', height: '130px', top: '7%', left: '78%', xMovement: 10, yMovement: -25 },
+  { width: '99px', height: '142px', top: '45%', left: '97%', xMovement: -5, yMovement: 20 },
+  { width: '153px', height: '142px', top: '36%', left: '37%', xMovement: 25, yMovement: -10 },
+  { width: '114px', height: '114px', top: '56%', left: '68%', xMovement: -30, yMovement: 5 },
+  { width: '127px', height: '146px', top: '49%', left: '68%', xMovement: 15, yMovement: -20 },
+  { width: '138px', height: '91px', top: '76%', left: '36%', xMovement: -10, yMovement: 25 },
+  { width: '93px', height: '79px', top: '96%', left: '88%', xMovement: 5, yMovement: -15 }
+];
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const typedRef = useRef<HTMLSpanElement>(null);
@@ -182,19 +201,19 @@ export default function Home() {
         >      
         {/* Animated background with flowing particles */} 
             <div className="absolute inset-0 overflow-hidden">
-            {Array(15).fill(0).map((_, i) => (
+            {backgroundParticles.map((particle, i) => (
               <motion.div 
                 key={i}
                 className="absolute rounded-full bg-gradient-to-r from-indigo-600/20 to-blue-600/20 dark:from-indigo-400/20 dark:to-blue-400/20 blur-md"
                 style={{
-                  width: `${Math.random() * 100 + 50}px`,
-                  height: `${Math.random() * 100 + 50}px`,
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
+                  width: particle.width,
+                  height: particle.height,
+                  top: particle.top,
+                  left: particle.left,
                 }}
                 animate={{ 
-                  x: [0, Math.random() * 100 - 50, 0],
-                  y: [0, Math.random() * 100 - 50, 0],
+                  x: [0, particle.xMovement, 0],
+                  y: [0, particle.yMovement, 0],
                   opacity: [0.2, 0.6, 0.2],
                   scale: [1, 1.2, 1],
                 }}
