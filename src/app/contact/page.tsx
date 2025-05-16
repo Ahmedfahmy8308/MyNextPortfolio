@@ -32,6 +32,8 @@ export default function ContactPage() {
     setLoading(true);
     
     try {
+      console.log("Sending message to API...");
+      
       await messageService.sendMessage({
         name: data.name,
         phone: data.phone,
@@ -46,9 +48,18 @@ export default function ContactPage() {
       reset();
     } catch (error) {
       console.error('Error sending message:', error);
+      
+      const errorMessage = error instanceof Error ? 
+        error.message : 
+        "There was a problem sending your message. Please try again.";
+      
       toast.error("Message Failed", {
-        description: error instanceof Error ? error.message : "There was a problem sending your message. Please try again.",
+        description: errorMessage,
       });
+      
+      if (typeof window !== 'undefined') {
+        console.debug('API URL used:', process.env.NEXT_PUBLIC_API_URL);
+      }
     } finally {
       setLoading(false);
     }
