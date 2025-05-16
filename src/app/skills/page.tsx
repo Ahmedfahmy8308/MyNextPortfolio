@@ -96,46 +96,47 @@ const skillsData = [
 ];
 
 
-function getSkillIcon(iconName: string) {
+function getSkillIcon(iconName: string, small = false) {
+  const sizeClass = small ? "w-4 h-4" : "w-6 h-6";
   const iconMap: Record<string, React.ReactNode> = {
-    react: <FaReact className="w-6 h-6" />,
-    nodejs: <FaNodeJs className="w-6 h-6" />,
-    nextjs: <SiNextdotjs className="w-6 h-6" />,
-    tailwind: <SiTailwindcss className="w-6 h-6" />,
-    typescript: <SiTypescript className="w-6 h-6" />,
-    javascript: <SiJavascript className="w-6 h-6" />,
-    dotnet: <SiDotnet className="w-6 h-6" />,
-    nestjs: <SiNestjs className="w-6 h-6" />,
-    sql: <SiMysql className="w-6 h-6" />,
-    mongodb: <SiMongodb className="w-6 h-6" />,
-    csharp: <DiVisualstudio className="w-6 h-6 " />,
-    python: <FaPython className="w-6 h-6" />,
-    java: <FaJava className="w-6 h-6" />,
-    git: <SiGit className="w-6 h-6" />,
-    docker: <FaDocker className="w-6 h-6" />,
-    firebase: <SiFirebase className="w-6 h-6" />,
-    siRedux : <SiRedux className="w-6 h-6" />,
-    flask : <SiFlask className="w-6 h-6" />,
-    codeSSlashFill : <RiCodeSSlashFill className="w-6 h-6" />,
-    api : <MdOutlineApi className="w-6 h-6" />,
-    bootstrap: <SiBootstrap className="w-6 h-6" />,
-    vercel: <SiVercel className="w-6 h-6" />,
-    html5: <SiHtml5 className="w-6 h-6" />,
-    css3: <SiCss3 className="w-6 h-6" />,
-    express : <SiExpress className="w-6 h-6" />,
-    cplusplus : <SiCplusplus className="w-6 h-6" />,
-    mysql : <SiMysql className="w-6 h-6" />,
-    postgreSQL : <SiPostgresql className="w-6 h-6" />,
-    opencv: <SiOpencv className="w-6 h-6" />,
-    numpy: <SiNumpy className="w-6 h-6" />,
-    scikitlearn: <SiScikitlearn className="w-6 h-6" />,
-    keras: <SiKeras className="w-6 h-6" />,
-    CV: <SiOpencv className="w-6 h-6" />,
-    matplotlib: <SiOpencv className="w-6 h-6" />,
-    tensorflow: <SiTensorflow className="w-6 h-6" />,
-    IPPython: <SiOpencv className="w-6 h-6" />,
+    react: <FaReact className={sizeClass} />,
+    nodejs: <FaNodeJs className={sizeClass} />,
+    nextjs: <SiNextdotjs className={sizeClass} />,
+    tailwind: <SiTailwindcss className={sizeClass} />,
+    typescript: <SiTypescript className={sizeClass} />,
+    javascript: <SiJavascript className={sizeClass} />,
+    dotnet: <SiDotnet className={sizeClass} />,
+    nestjs: <SiNestjs className={sizeClass} />,
+    sql: <SiMysql className={sizeClass} />,
+    mongodb: <SiMongodb className={sizeClass} />,
+    csharp: <DiVisualstudio className={sizeClass} />,
+    python: <FaPython className={sizeClass} />,
+    java: <FaJava className={sizeClass} />,
+    git: <SiGit className={sizeClass} />,
+    docker: <FaDocker className={sizeClass} />,
+    firebase: <SiFirebase className={sizeClass} />,
+    siRedux : <SiRedux className={sizeClass} />,
+    flask : <SiFlask className={sizeClass} />,
+    codeSSlashFill : <RiCodeSSlashFill className={sizeClass} />,
+    api : <MdOutlineApi className={sizeClass} />,
+    bootstrap: <SiBootstrap className={sizeClass} />,
+    vercel: <SiVercel className={sizeClass} />,
+    html5: <SiHtml5 className={sizeClass} />,
+    css3: <SiCss3 className={sizeClass} />,
+    express : <SiExpress className={sizeClass} />,
+    cplusplus : <SiCplusplus className={sizeClass} />,
+    mysql : <SiMysql className={sizeClass} />,
+    postgreSQL : <SiPostgresql className={sizeClass} />,
+    opencv: <SiOpencv className={sizeClass} />,
+    numpy: <SiNumpy className={sizeClass} />,
+    scikitlearn: <SiScikitlearn className={sizeClass} />,
+    keras: <SiKeras className={sizeClass} />,
+    CV: <SiOpencv className={sizeClass} />,
+    matplotlib: <SiOpencv className={sizeClass} />,
+    tensorflow: <SiTensorflow className={sizeClass} />,
+    IPPython: <SiOpencv className={sizeClass} />,
   };
-  return iconMap[iconName] || <span className="w-6 h-6 inline-block bg-muted rounded" />;
+  return iconMap[iconName] || <span className={sizeClass + " inline-block bg-muted rounded"} />;
 }
 
 export default function SkillsPage() {
@@ -233,23 +234,27 @@ export default function SkillsPage() {
           >
             {filteredSkills.map((skill, index) => (
               <motion.div key={skill.name + index} variants={itemVariants}>
-                <Card className="overflow-hidden h-full aspect-square hover:shadow-md transition-shadow">
-                  <CardContent className="sm:p-6 p-2">
+                <Card className="overflow-hidden h-full aspect-square hover:shadow-md transition-shadow lg:aspect-[1/0.7]">
+                  <CardContent className="sm:p-6 p-1">
                     <div className="flex flex-col items-center">
                       <div className="mb-4 text-primary">
-                        {/* Responsive icon size */}
                         <span className="sm:block hidden">{typeof skill.icon === 'string' ? getSkillIcon(skill.icon) : React.createElement(skill.icon)}</span>
-                        <span className="sm:hidden block">{typeof skill.icon === 'string' ? React.cloneElement(getSkillIcon(skill.icon), { className: 'w-4 h-4' }) : React.createElement(skill.icon, { className: 'w-4 h-4' })}</span>
+                        <span className="sm:hidden block">{typeof skill.icon === 'string' ? getSkillIcon(skill.icon, true) : React.createElement(skill.icon, { className: 'w-4 h-4' })}</span>
                       </div>
                       <h3 className="font-medium mb-2 sm:text-base text-xs text-center">{skill.name}</h3>
                       {skill.level && (
                         <>
-                          <div className="w-full bg-muted/50 rounded-full h-2 mb-1">
+                          <div className="w-full rounded-full h-2 mb-1 relative bg-muted/50">
                             <motion.div 
-                              className="bg-primary h-2 rounded-full"
+                              className="bg-primary h-2 rounded-full absolute left-0 top-0"
+                              style={{ zIndex: 2 }}
                               initial={{ width: 0 }}
                               animate={{ width: `${skill.level}%` }}
                               transition={{ duration: 1, delay: index * 0.1 }}
+                            />
+                            <div
+                              className="h-2 rounded-full absolute right-0 top-0 bg-red-400/10 dark:bg-red-500/10"
+                              style={{ width: `${100 - skill.level}%`, zIndex: 1 }}
                             />
                           </div>
                           <span className="text-xs text-muted-foreground">{skill.level}%</span>
