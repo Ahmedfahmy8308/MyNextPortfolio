@@ -490,7 +490,7 @@ export default function Home() {
                   />
                   
                   {/* Main image */}                  <div className="relative w-64 h-64 md:w-80 md:h-80">                    <Image
-                      src="/me1.jpg"
+                      src="/images/me1.jpg"
                       alt="Ahmed Fahmy profile picture"
                       fill
                       className="object-cover rounded-full border-4 border-indigo-700/80 dark:border-indigo-500/80 p-1 shadow-md"

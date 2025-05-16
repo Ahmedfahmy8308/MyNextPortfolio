@@ -70,7 +70,7 @@ export default function AboutPage() {
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-xl blur-lg opacity-40 group-hover:opacity-75 transition duration-1000"></div>
                     <div className="relative">
                       <Image
-                        src="/me2.jpg"
+                        src="/images/me2.jpg"
                         alt="Ahmed Fahmy's profile picture"
                         width={400}
                         height={400}
@@ -247,7 +247,7 @@ export default function AboutPage() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-secondary to-primary rounded-xl blur-lg opacity-40 group-hover:opacity-75 transition duration-1000"></div>
                   <div className="relative">
                     <Image
-                      src="/me3.jpg"
+                      src="/images/me3.jpg"
                       alt="Faculty of Computers and Information Kafr El-Sheikh University"
                       width={500}
                       height={350}
