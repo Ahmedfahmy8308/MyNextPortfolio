@@ -8,6 +8,13 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
+type Skill = {
+  name: string;
+  icon: string;
+  level: number;
+  category: string;
+};
+
 const skills: Skill[] = [
   // Frontend
   { name: 'React', icon: 'react', level: 90, category: 'frontend' },

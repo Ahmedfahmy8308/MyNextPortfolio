@@ -42,18 +42,6 @@ export default function Typewriter({ texts, speed = 100, delay = 1500 }: Typewri
     return () => clearTimeout(timeout);
   }, [currentIndex, displayText, isDeleting, isWaiting, texts, speed, delay]);
 
-  const cursorVariants = {
-    blinking: {
-      opacity: [0, 1, 0],
-      transition: {
-        duration: 1,
-        repeat: Infinity,
-        repeatType: "loop",
-        ease: "linear",
-      },
-    },
-  };
-
   return (
     <span className="inline-flex items-center">
       <AnimatePresence mode="wait">
@@ -69,8 +57,15 @@ export default function Typewriter({ texts, speed = 100, delay = 1500 }: Typewri
         </motion.span>
       </AnimatePresence>
       <motion.span
-        variants={cursorVariants}
-        animate="blinking"
+        animate={{
+          opacity: [0, 1, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear",
+          },
+        }}
         className="ml-0.5 text-primary font-medium"
       >
         |

@@ -17,6 +17,13 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 // Import components with dynamic loading
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
+type ServiceProps = {
+  icon: string;
+  title: string;
+  modalTitle: string;
+  description: string[];
+};
+
 const services: ServiceProps[] = [
   {
     icon: "database",

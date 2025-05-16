@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import dynamic from 'next/dynamic';
 import { motion } from "framer-motion";
 import { ScrollToTop } from '@/components/scroll-to-top';
@@ -150,7 +150,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       {/* Social Media Column Left - Static, not fixed, with vertical scroll bar if needed */}
       <div className="absolute left-4 top-28 h-[70vh] flex flex-col gap-4 z-40 overflow-y-auto scrollbar-thin scrollbar-thumb-primary/60 scrollbar-track-transparent items-center">
         <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
@@ -196,78 +196,79 @@ export default function Home() {
           animate="visible"
           exit="exit"
           variants={pageVariants}
-        >              <section id="home" className="py-20 px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
-              <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-8 md:px-14 lg:px-20">
-                <motion.div 
-                  className="flex flex-col gap-6 order-2 md:order-1 xl:ml-28"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <div>
-                    <motion.h1 
-                      className="text-4xl font-bold mb-2"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3, duration: 0.8 }}
-                    >
-                      Hi!<span className="wave">👋</span>, I&apos;m Ahmed Fahmy
-                    </motion.h1>
-                    <motion.h3 
-                      className="text-2xl mb-4"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.6, duration: 0.8 }}
-                    >
-                      and I&apos;m <span ref={typedRef} className="text-primary auto-input"></span>
-                    </motion.h3>
-                    <motion.p 
-                      className="text-muted-foreground mb-6"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.9, duration: 0.8 }}
-                    >
-                      Passionate Software Engineer with solid experience in backend development and building scalable APIs. I enjoy solving complex problems and have reached an advanced level in algorithmic thinking. Always eager to learn, build, and grow.
-                    </motion.p>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.2, duration: 0.8 }}
-                    >
-                      <Link href="/contact" passHref>
-                        <Button size="lg" className="gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all">
-                          Contact Me
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                          </svg>
-                        </Button>
-                      </Link>
-                    </motion.div>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="order-1 md:order-2 flex justify-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <div className="relative w-64 h-64 md:w-80 md:h-80">
-                    <Image
-                      src="/me1.jpg"
-                      alt="Ahmed Fahmy profile picture"
-                      fill
-                      className="object-cover rounded-full border-4 border-primary p-1"
-                      priority
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </section>
-            <Footer />
-            <ScrollToTop />
-          </motion.main>
-        )}
-      </>
+        >
+          <section id="home" className="py-20 px-6 md:px-10 lg:px-16 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-8 md:px-14 lg:px-20">
+              <motion.div 
+                className="flex flex-col gap-6 order-2 md:order-1 xl:ml-28"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div>
+                  <motion.h1 
+                    className="text-4xl font-bold mb-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.8 }}
+                  >
+                    Hi!<span className="wave">👋</span>, I&apos;m Ahmed Fahmy
+                  </motion.h1>
+                  <motion.h3 
+                    className="text-2xl mb-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                  >
+                    and I&apos;m <span ref={typedRef} className="text-primary auto-input"></span>
+                  </motion.h3>
+                  <motion.p 
+                    className="text-muted-foreground mb-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.9, duration: 0.8 }}
+                  >
+                    Passionate Software Engineer with solid experience in backend development and building scalable APIs. I enjoy solving complex problems and have reached an advanced level in algorithmic thinking. Always eager to learn, build, and grow.
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.8 }}
+                  >
+                    <Link href="/contact" passHref>
+                      <Button size="lg" className="gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all">
+                        Contact Me
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                      </Button>
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="order-1 md:order-2 flex justify-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="relative w-64 h-64 md:w-80 md:h-80">
+                  <Image
+                    src="/me1.jpg"
+                    alt="Ahmed Fahmy profile picture"
+                    fill
+                    className="object-cover rounded-full border-4 border-primary p-1"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </section>
+          <Footer />
+          <ScrollToTop />
+        </motion.main>
+      )}
+    </Suspense>
   );
 }
