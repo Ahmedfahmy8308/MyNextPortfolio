@@ -29,7 +29,7 @@ export default function ContactPage() {
     formState: { errors } 
   } = useForm<ContactFormData>();
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async () => {
     setLoading(true);
     
     try {
