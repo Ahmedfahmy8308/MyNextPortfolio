@@ -40,10 +40,10 @@ export default function AboutPage() {
         exit="exit"
         variants={pageVariants}
       >
-        <section className="py-24 px-6 md:px-10 lg:px-16 overflow-hidden">
+        <section className="section py-24 px-6 md:px-10 lg:px-16 overflow-hidden">
           <div className="container mx-auto px-8 md:px-14 lg:px-20" data-aos="fade-up">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-extrabold mb-4 section-heading">
                 <span className="inline-block align-middle">About Me
 </span>
               </h2>
@@ -57,7 +57,7 @@ export default function AboutPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <motion.div 
-                className="flex justify-center"
+                className="flex justify-center card"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 
                 <div className="grid grid-cols-2 gap-6 mb-8">
                   <motion.div 
-                    className="text-center p-4 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow"
+                    className="text-center p-4 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow card"
                     whileHover={{ y: -5 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function AboutPage() {
                     <p className="text-muted-foreground">Years <br />Experience</p>
                   </motion.div>
                   <motion.div 
-                    className="text-center p-4 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow"
+                    className="text-center p-4 rounded-lg bg-background shadow-sm hover:shadow-md transition-shadow card"
                     whileHover={{ y: -5 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -114,13 +114,8 @@ export default function AboutPage() {
                   </motion.div>
                 </div>
                 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8 }}
-                  className="flex justify-center"
-                >
-                  <Button asChild className="gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all">
+                <motion.div className="flex justify-center">
+                  <Button asChild className="gap-2 btn">
                     <a href="/pdf/Cv.pdf" download>
                       Download CV
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -132,9 +127,10 @@ export default function AboutPage() {
               </motion.div>
             </div>
           </div>
+          <div className="mt-20" />
+          <Footer />
+          <ScrollToTop />
         </section>
-        <Footer />
-        <ScrollToTop />
       </motion.main>
     </Suspense>
   );

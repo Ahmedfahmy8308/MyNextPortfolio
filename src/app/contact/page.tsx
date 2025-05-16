@@ -94,16 +94,15 @@ export default function ContactPage() {
         exit="exit"
         variants={pageVariants}
       >
-        <section className="py-24 px-6 md:px-10 lg:px-16 overflow-hidden">
+        <section className="section py-24 px-6 md:px-10 lg:px-16 overflow-hidden">
           <div className="container mx-auto px-8 md:px-14 lg:px-20" data-aos="fade-up">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-2">Contact Me</h2>
+              <h2 className="text-3xl font-bold mb-2 section-heading">Contact Me</h2>
               <p className="text-muted-foreground">Get in touch</p>
             </div>
-            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
               <motion.div 
-                className="md:col-span-1 space-y-8"
+                className="md:col-span-1 space-y-8 card"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -152,7 +151,7 @@ export default function ContactPage() {
               
               <motion.form 
                 onSubmit={handleSubmit(onSubmit)} 
-                className="md:col-span-2 space-y-6"
+                className="md:col-span-2 space-y-6 card"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}

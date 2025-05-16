@@ -8,66 +8,142 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
-type Skill = {
-  name: string;
-  icon: string;
-  level: number;
-  category: string;
-};
+// React Icons imports
+import { FaReact, FaNodeJs, FaDocker, FaPython, FaJava } from 'react-icons/fa';
+import { DiVisualstudio } from 'react-icons/di';
+import {
+  SiDotnet, SiPostgresql, SiFlask, SiMongodb,
+  SiTensorflow,SiBootstrap, SiOpencv, SiNumpy,SiNextdotjs, SiScikitlearn, SiKeras, SiRedux,
+  SiTailwindcss, SiTypescript, SiHtml5, SiCss3, SiJavascript,SiExpress, SiGit, SiFirebase, SiCplusplus ,SiMysql , SiVercel, SiGithubactions,
+  SiNestjs,
+} from 'react-icons/si';
+import { MdOutlineApi } from 'react-icons/md';
+import { RiCodeSSlashFill } from 'react-icons/ri';
 
-const skills: Skill[] = [
-  // Frontend
-  { name: 'React', icon: 'react', level: 90, category: 'frontend' },
-  { name: 'Next.js', icon: 'nextjs', level: 85, category: 'frontend' },
-  { name: 'Tailwind CSS', icon: 'tailwind', level: 95, category: 'frontend' },
-  { name: 'TypeScript', icon: 'typescript', level: 85, category: 'frontend' },
-  { name: 'JavaScript', icon: 'javascript', level: 90, category: 'frontend' },
-  
-  // Backend
-  { name: '.NET Core', icon: 'dotnet', level: 85, category: 'backend' },
-  { name: 'Node.js', icon: 'nodejs', level: 80, category: 'backend' },
-  { name: 'Nest.js', icon: 'nestjs', level: 75, category: 'backend' },
-  { name: 'SQL', icon: 'sql', level: 80, category: 'backend' },
-  { name: 'MongoDB', icon: 'mongodb', level: 75, category: 'backend' },
-  
-  // Languages
-  { name: 'C#', icon: 'csharp', level: 90, category: 'languages' },
-  { name: 'Python', icon: 'python', level: 80, category: 'languages' },
-  { name: 'Java', icon: 'java', level: 70, category: 'languages' },
-  
-  // Tools
-  { name: 'Git', icon: 'git', level: 85, category: 'tools' },
-  { name: 'Docker', icon: 'docker', level: 70, category: 'tools' },
-  { name: 'Firebase', icon: 'firebase', level: 75, category: 'tools' },
+
+
+const skillsData = [
+  {
+    section: "🖥️ Backend",
+    skills: [
+      { icon: 'dotnet', name: '.NET Core', level: 95, category: 'backend' },
+      { icon: "express", name: "Express.js"  , level: 70, category: 'backend'},
+      { icon: 'nestjs', name: 'Nest.js', level: 70, category: 'backend' },
+      { icon: 'flask', name: "Flask"  , level: 60, category: 'backend'},
+      { icon: 'codeSSlashFill', name: "ASP.NET MVC"  , level: 85, category: 'backend'},
+      { icon: 'api', name: "Web API"  , level: 85, category: 'backend'},
+      { icon: 'codeSSlashFill', name: "LINQ" , level: 80, category: 'backend' },
+      { icon: 'nodejs', name: 'Node.js', level: 70, category: 'backend' },
+    ]
+  },
+  {
+    section: "🎨 Frontend",
+    skills: [
+      { icon: 'react', name: 'React', level: 90, category: 'frontend' },
+      { icon: 'nextjs', name: 'Next.js', level: 85, category: 'frontend' },
+      { icon: 'tailwind', name: 'Tailwind CSS', level: 95, category: 'frontend' },
+      { icon: 'bootstrap', name: 'Bootstrap', level: 95, category: 'frontend' },
+      { icon: 'html5', name: "HTML5" , level: 95, category: 'frontend'},
+      { icon: 'css3', name: "CSS3" , level: 95, category: 'frontend'},
+      { icon: 'typescript', name: 'TypeScript', level: 85, category: 'frontend' },
+      { icon: 'javascript', name: 'JavaScript', level: 90, category: 'frontend' },
+
+    ]
+  },
+  {
+    section: "💻 Languages",
+    skills: [
+      { icon: 'cplusplus', name: 'C++', level: 80, category: 'languages' },
+      { icon: 'csharp', name: 'C#', level: 90, category: 'languages' },
+      { icon: 'python', name: 'Python', level: 80, category: 'languages' },
+      { icon: 'javascript', name: "JavaScript" ,  level: 90, category: 'languages'},
+      { icon: 'typescript', name: "TypeScript" , level: 90, category: 'languages' },
+      { icon: 'sql', name: "SQL" , level: 80, category: 'languages'},
+    ]
+  },
+  {
+    section: "🛠️ Tools & Cloud",
+    skills: [
+      { icon: FaDocker, name: "Docker"  , level: 95, category: 'tools'},
+      { icon: SiGithubactions, name: "GitHub Actions" , level: 85, category: 'tools'},
+      { icon: 'git', name: 'Git', level: 85, category: 'tools' },
+      { icon: SiVercel, name: "Vercel" , level: 95, category: 'tools'},
+    ]
+  },
+  {
+    section: "Databases",
+    skills: [
+      { icon: 'sql', name: 'SQL', level: 80, category: 'databases' },
+      { icon: 'mysql', name: "MySQL" , level: 85, category: 'databases' },
+      { icon: 'postgreSQL', name: "PostgreSQL"  , level: 85, category: 'databases'},
+      { icon: 'firebase', name: 'Firebase', level: 75, category: 'databases' },
+      { icon: 'mongodb', name: 'MongoDB', level: 75, category: 'databases' },
+    ]
+  },
+  {
+    section: "🧠 AI & Computer Vision",
+    skills: [
+      { icon: 'opencv', name: "OpenCV" , level: 75, category: 'AI'},
+      { icon: 'tensorflow', name: "TensorFlow", level: 75, category: 'AI' },
+      { icon: 'IPPython', name: "Image Processing" , level: 75, category: 'AI'},
+      { icon: 'numpy', name: "NumPy" , level: 75, category: 'AI'},
+      { icon: 'scikitlearn', name: "Scikit-Learn" , level: 75, category: 'AI'},
+      { icon: 'keras', name: "Keras" , level: 75, category: 'AI'},
+      { icon: 'CV', name: "Computer Vision" , level: 75, category: 'AI'},
+      { icon: 'matplotlib', name: "Matplotlib", level: 75, category: 'AI' },
+    ]
+  }
 ];
 
-function getSkillIcon(iconName: string) {
-  // You can replace these with actual SVG icons or use an icon library
-  const iconMap: Record<string, React.ReactNode> = {
-    react: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-        <path d="M12 14.597a2.594 2.594 0 100-5.188 2.594 2.594 0 000 5.188z"/>
-        <path d="M12 16.5a4.498 4.498 0 01-4.5-4.5 4.498 4.498 0 014.5-4.5 4.498 4.498 0 014.5 4.5 4.498 4.498 0 01-4.5 4.5zm7.979-3.375c.42-.749.571-1.493.42-2.23-.3-1.498-1.621-2.317-3.182-2.317-.66 0-1.381.131-2.101.36-.239-.81-.539-1.5-.87-2.069C12.857 4.93 11.737 4 11.017 4c-.72 0-1.8.93-2.31 2.88-.3.558-.6 1.259-.84 2.069-.72-.229-1.441-.36-2.101-.36-1.56 0-2.881.819-3.182 2.317-.15.739 0 1.493.42 2.23.39.738 1.05 1.498 1.89 2.248-.84.75-1.5 1.499-1.89 2.248-.42.75-.57 1.493-.42 2.23.3 1.499 1.621 2.318 3.182 2.318.66 0 1.381-.131 2.101-.36.24.81.54 1.5.87 2.069.51 1.95 1.59 2.88 2.31 2.88.72 0 1.83-.93 2.279-2.87.331-.569.631-1.259.87-2.069.72.229 1.441.36 2.101.36 1.56 0 2.881-.819 3.182-2.318.15-.738 0-1.493-.42-2.23-.39-.749-1.05-1.498-1.89-2.248.84-.75 1.5-1.499 1.89-2.248z" 
-          fillRule="evenodd" 
-          clipRule="evenodd"
-        />
-      </svg>
-    ),
-  };
 
-  return iconMap[iconName] || (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-    </svg>
-  );
+function getSkillIcon(iconName: string) {
+  const iconMap: Record<string, React.ReactNode> = {
+    react: <FaReact className="w-6 h-6" />,
+    nodejs: <FaNodeJs className="w-6 h-6" />,
+    nextjs: <SiNextdotjs className="w-6 h-6" />,
+    tailwind: <SiTailwindcss className="w-6 h-6" />,
+    typescript: <SiTypescript className="w-6 h-6" />,
+    javascript: <SiJavascript className="w-6 h-6" />,
+    dotnet: <SiDotnet className="w-6 h-6" />,
+    nestjs: <SiNestjs className="w-6 h-6" />,
+    sql: <SiMysql className="w-6 h-6" />,
+    mongodb: <SiMongodb className="w-6 h-6" />,
+    csharp: <DiVisualstudio className="w-6 h-6 " />,
+    python: <FaPython className="w-6 h-6" />,
+    java: <FaJava className="w-6 h-6" />,
+    git: <SiGit className="w-6 h-6" />,
+    docker: <FaDocker className="w-6 h-6" />,
+    firebase: <SiFirebase className="w-6 h-6" />,
+    siRedux : <SiRedux className="w-6 h-6" />,
+    flask : <SiFlask className="w-6 h-6" />,
+    codeSSlashFill : <RiCodeSSlashFill className="w-6 h-6" />,
+    api : <MdOutlineApi className="w-6 h-6" />,
+    bootstrap: <SiBootstrap className="w-6 h-6" />,
+    vercel: <SiVercel className="w-6 h-6" />,
+    html5: <SiHtml5 className="w-6 h-6" />,
+    css3: <SiCss3 className="w-6 h-6" />,
+    express : <SiExpress className="w-6 h-6" />,
+    cplusplus : <SiCplusplus className="w-6 h-6" />,
+    mysql : <SiMysql className="w-6 h-6" />,
+    postgreSQL : <SiPostgresql className="w-6 h-6" />,
+    opencv: <SiOpencv className="w-6 h-6" />,
+    numpy: <SiNumpy className="w-6 h-6" />,
+    scikitlearn: <SiScikitlearn className="w-6 h-6" />,
+    keras: <SiKeras className="w-6 h-6" />,
+    CV: <SiOpencv className="w-6 h-6" />,
+    matplotlib: <SiOpencv className="w-6 h-6" />,
+    tensorflow: <SiTensorflow className="w-6 h-6" />,
+    IPPython: <SiOpencv className="w-6 h-6" />,
+  };
+  return iconMap[iconName] || <span className="w-6 h-6 inline-block bg-muted rounded" />;
 }
 
 export default function SkillsPage() {
   const [filter, setFilter] = useState<string>('all');
   
-  const filteredSkills = skills.filter(skill => 
-    filter === 'all' ? true : skill.category === filter
-  );
+  const filteredSkills = skillsData
+    .flatMap(section => section.skills)
+    .filter(skill => filter === 'all' ? true : skill.category === filter);
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -127,19 +203,19 @@ export default function SkillsPage() {
           </div>
           
           <div className="flex justify-center mb-8">
-            <div className="inline-flex rounded-md shadow-sm" role="group">
-              {['all', 'frontend', 'backend', 'languages', 'tools'].map((category) => (
+            <div className="inline-flex rounded-md shadow-sm w-full max-w-full overflow-x-auto gap-2 sm:gap-0 sm:w-auto hide-scrollbar" role="group">
+              {['all', 'frontend', 'backend', 'languages', 'tools', 'databases', 'AI'].map((category) => (
                 <button
                   key={category}
                   onClick={() => setFilter(category)}
-                  className={`px-4 py-2 text-sm font-medium ${
+                  className={`px-4 py-2 text-sm font-medium whitespace-nowrap ${
                     filter === category 
                       ? 'bg-primary text-primary-foreground' 
                       : 'bg-muted text-muted-foreground hover:bg-muted/70'
                   } ${
                     category === 'all' ? 'rounded-l-lg' : ''
                   } ${
-                    category === 'tools' ? 'rounded-r-lg' : ''
+                    category === 'AI' ? 'rounded-r-lg' : ''
                   } transition-colors duration-300`}
                 >
                   {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -149,30 +225,34 @@ export default function SkillsPage() {
           </div>
           
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             key={filter} 
           >
             {filteredSkills.map((skill, index) => (
-              <motion.div key={skill.name} variants={itemVariants}>
+              <motion.div key={skill.name + index} variants={itemVariants}>
                 <Card className="overflow-hidden h-full hover:shadow-md transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex flex-col items-center">
                       <div className="mb-4 text-primary">
-                        {getSkillIcon(skill.icon)}
+                        {typeof skill.icon === 'string' ? getSkillIcon(skill.icon) : React.createElement(skill.icon)}
                       </div>
                       <h3 className="font-medium mb-2">{skill.name}</h3>
-                      <div className="w-full bg-muted/50 rounded-full h-2 mb-1">
-                        <motion.div 
-                          className="bg-primary h-2 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: index * 0.1 }}
-                        />
-                      </div>
-                      <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                      {skill.level && (
+                        <>
+                          <div className="w-full bg-muted/50 rounded-full h-2 mb-1">
+                            <motion.div 
+                              className="bg-primary h-2 rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: `${skill.level}%` }}
+                              transition={{ duration: 1, delay: index * 0.1 }}
+                            />
+                          </div>
+                          <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                        </>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

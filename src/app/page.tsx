@@ -14,8 +14,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const typedRef = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
+  useEffect(() => {    if (typeof window !== 'undefined') {
       document.documentElement.style.scrollBehavior = 'smooth';
       const alreadyLoaded = sessionStorage.getItem('portfolioLoaded');
       if (alreadyLoaded) {
@@ -46,14 +45,12 @@ export default function Home() {
         });
       } catch (error) {
         console.error("Failed to load AOS", error);
-      }
-
-      setTimeout(() => {
+      }      setTimeout(() => {
         setIsLoading(false);
         if (typeof window !== 'undefined') {
           sessionStorage.setItem('portfolioLoaded', 'true');
         }
-      }, 1000);
+      }, 2000); 
     };
     
     initialize();
@@ -71,10 +68,10 @@ export default function Home() {
         typed = new Typed(typedRef.current!, {
           strings: [
             "a Software Engineer ....",
+            "a Back-End Developer ....",
             "a student at Faculty of Computers and information ....",
-          ],
-          typeSpeed: 100,
-          backSpeed: 100,
+          ],          typeSpeed: 40,
+          backSpeed: 20,
           loop: true,
         });
       })();
@@ -83,14 +80,18 @@ export default function Home() {
       };
     }
   }, [isLoading]);
-
   const pageVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeInOut" }
+      y: 0,
+      transition: { 
+        duration: 0.8, 
+        ease: "easeInOut",
+        staggerChildren: 0.1 
+      }
     },
-    exit: { opacity: 0, transition: { duration: 0.5 } }
+    exit: { opacity: 0, y: -20, transition: { duration: 0.5 } }
   };
 
   function SocialLink({ href, icon }: { href: string; icon: string }) {
@@ -158,36 +159,208 @@ export default function Home() {
         <SocialLink href="https://x.com/Ahmed_fahmy8308" icon="twitter" />
         <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
         <SocialLink href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" icon="linkedin" />
-      </div>
-      {isLoading ? (
-        <motion.div 
-          key="loader"
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background"
+      </div>      {isLoading ? (        <motion.div          key="loader"          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background overflow-hidden"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+          animate={{ opacity: 1 }}
+          exit={{ 
+            opacity: 0,
+            scale: 1.2,
+            transition: { 
+              duration: 1,
+              ease: "easeInOut" 
+            }
+          }}
+        >          {/* Animated background with flowing particles */}          <div className="absolute inset-0 overflow-hidden">
+            {Array(15).fill(0).map((_, i) => (
+              <motion.div 
+                key={i}
+                className="absolute rounded-full bg-gradient-to-r from-indigo-600/20 to-blue-600/20 dark:from-indigo-400/20 dark:to-blue-400/20 blur-md"
+                style={{
+                  width: `${Math.random() * 100 + 50}px`,
+                  height: `${Math.random() * 100 + 50}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                }}
+                animate={{ 
+                  x: [0, Math.random() * 100 - 50, 0],
+                  y: [0, Math.random() * 100 - 50, 0],
+                  opacity: [0.2, 0.6, 0.2],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{                  duration: 6, // Faster background particle movement
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+          </div>
+
           <motion.div
+            className="relative flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ 
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360]
+              opacity: 1,
+              scale: 1
             }}
             transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut" 
+              duration: 0.6,
+              ease: "easeOut"
             }}
-            className="mb-4"
-          >
-            <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+          >            {/* AF Logo with rotation */}
+            <motion.div 
+              className="relative w-28 h-28"                animate={{ 
+                  rotate: 360
+                }}
+                transition={{ 
+                  duration: 5, // Faster rotation
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+            >
+              {/* Pulse effect rings */}              <motion.div
+                className="absolute inset-[-10px] rounded-full"
+                animate={{ 
+                  boxShadow: [
+                    "0px 0px 0px 0px rgba(67, 56, 202, 0)",
+                    "0px 0px 0px 10px rgba(67, 56, 202, 0.15)",
+                    "0px 0px 0px 20px rgba(67, 56, 202, 0)",
+                  ],
+                  scale: [0.95, 1, 0.95]
+                }}                transition={{ 
+                  duration: 1.5, // Faster pulse effect
+                  repeat: Infinity,
+                  ease: "easeInOut" 
+                }}
+              />{/* Outer rotating rings */}
+              <motion.div
+                className="absolute inset-0 rounded-full border-4 border-transparent"
+                style={{ borderTopColor: '#4338ca', borderBottomColor: '#0369a1' }}
+                animate={{ 
+                  rotate: 360
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              <motion.div
+                className="absolute inset-[-5px] rounded-full border-2 border-transparent"
+                style={{ borderRightColor: '#4338ca', borderLeftColor: '#0369a1', opacity: 0.7 }}
+                animate={{ 
+                  rotate: -180
+                }}
+                transition={{ 
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              
+              {/* Center logo */}
+              <motion.div 
+                className="absolute inset-2 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg"                animate={{ 
+                  boxShadow: ["0px 0px 10px rgba(79, 70, 229, 0.3)", "0px 0px 20px rgba(79, 70, 229, 0.6)", "0px 0px 10px rgba(79, 70, 229, 0.3)"],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 1.5, // Faster animation
+                  repeat: Infinity,
+                  ease: "easeInOut" 
+                }}
+              >                {/* Counter-rotating text to keep it upright */}
+                <motion.div 
+                  className="relative flex items-center justify-center w-full h-full"
+                  animate={{ 
+                    rotate: -360
+                  }}
+                  transition={{                    rotate: {
+                      duration: 5, // Faster counter-rotation
+                      repeat: Infinity,
+                      ease: "linear"
+                    }
+                  }}
+                >
+                  {/* First letter with glow effect */}
+                  <motion.span 
+                    className="text-4xl font-bold text-white absolute"                    animate={{ 
+                      textShadow: [
+                        "0px 0px 5px rgba(255,255,255,0.2), 0px 0px 10px rgba(79, 70, 229, 0.3)",
+                        "0px 0px 15px rgba(255,255,255,0.8), 0px 0px 30px rgba(79, 70, 229, 0.8)",
+                        "0px 0px 5px rgba(255,255,255,0.2), 0px 0px 10px rgba(79, 70, 229, 0.3)"
+                      ],
+                      opacity: [0.8, 1, 0.8]
+                    }}
+                    transition={{ 
+                      duration: 1.5, // Faster text shadow animation
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0
+                    }}
+                    style={{ left: "calc(50% - 20px)" }}
+                  >
+                    A
+                  </motion.span>
+                  
+                  {/* Second letter with glow effect, slightly delayed */}
+                  <motion.span 
+                    className="text-4xl font-bold text-white absolute"
+                    animate={{ 
+                      textShadow: [
+                        "0px 0px 5px rgba(255,255,255,0.2), 0px 0px 10px rgba(79, 70, 229, 0.3)",
+                        "0px 0px 15px rgba(255,255,255,0.8), 0px 0px 30px rgba(79, 70, 229, 0.8)",
+                        "0px 0px 5px rgba(255,255,255,0.2), 0px 0px 10px rgba(79, 70, 229, 0.3)"
+                      ],
+                      opacity: [0.8, 1, 0.8]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                    style={{ left: "calc(50% + 4px)" }}
+                  >
+                    F
+                  </motion.span>
+                </motion.div>
+              </motion.div>
+                {/* Decorative dots */}
+              {/* Removed the decorative dots as requested */}
+            </motion.div>              {/* Loading indicator - Progress bar style */}
+            <motion.div 
+              className="absolute -bottom-10 w-36 flex flex-col gap-1 justify-center items-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >              <motion.div 
+                className="h-1 bg-gray-200 dark:bg-gray-700 rounded-full w-full overflow-hidden"
+              >
+                <motion.div 
+                  className="h-full bg-gradient-to-r from-indigo-700 to-blue-600 dark:from-indigo-500 dark:to-blue-400 rounded-full"
+                  initial={{ width: "0%" }}
+                  animate={{ 
+                    width: ["0%", "100%", "0%"], 
+                  }}
+                  transition={{                  duration: 1.5, // Faster animation
+                  repeat: Infinity, 
+                  ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+              <motion.p
+                className="text-xs text-foreground/70"
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut" 
+                }}
+              >
+                Loading...
+              </motion.p>
+            </motion.div>
           </motion.div>
-          <motion.h2 
-            className="text-xl font-medium mt-4"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            Loading Portfolio...
-          </motion.h2>
         </motion.div>
       ) : (
         <motion.main
@@ -205,38 +378,46 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <div>
-                  <motion.h1 
-                    className="text-4xl font-bold mb-2"
+                <div>                    
+                  <motion.h1                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white dark:text-white leading-tight"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                  >
-                    Hi!<span className="wave">👋</span>, I&apos;m Ahmed Fahmy
+                    transition={{ delay: 0.3, duration: 0.8 }}>  
+                    Ahmed Fahmy
                   </motion.h1>
                   <motion.h3 
-                    className="text-2xl mb-4"
+                    className="text-2xl mb-4 font-medium flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                   >
-                    and I&apos;m <span ref={typedRef} className="text-primary auto-input"></span>
+                  <span ref={typedRef} className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-300 font-bold auto-input"></span>
                   </motion.h3>
-                  <motion.p 
-                    className="text-muted-foreground mb-6"
+                    <motion.div
+                    className="relative mb-8"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.9, duration: 0.8 }}
+                    transition={{ delay: 0.8, duration: 0.8 }}
                   >
-                    Passionate Software Engineer with solid experience in backend development and building scalable APIs. I enjoy solving complex problems and have reached an advanced level in algorithmic thinking. Always eager to learn, build, and grow.
-                  </motion.p>
-                  <motion.div
+                    <div className="absolute left-0 w-20 h-1 bg-gradient-to-r from-indigo-700 to-blue-600 dark:from-indigo-500 dark:to-blue-400 rounded-full"></div>
+                  </motion.div>
+                  
+                  <motion.p 
+                    className="text-muted-foreground mb-6 text-base leading-relaxed"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.9, duration: 0.8 }}                  >                    <span className="font-medium text-indigo-600 dark:text-indigo-400">Full-Stack Developer</span> specializing in building exceptional digital experiences.
+                    With expertise in <span className="font-medium text-indigo-600 dark:text-indigo-400">backend development</span> and 
+                    <span className="font-medium text-indigo-600 dark:text-indigo-400"> scalable APIs</span>.
+                    My passion lies in solving complex technical challenges through elegant solutions, 
+                    approaching each project with a keen eye for design and performance optimization.
+                  </motion.p>                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                  >
-                    <Link href="/contact" passHref>
-                      <Button size="lg" className="gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all">
+                    className="flex gap-4"
+                  >                    <Link href="/contact" passHref>
+                      <Button size="lg" className="gap-2 hover:shadow-xl hover:translate-y-[-3px] transition-all bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-md">
                         Contact Me
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -246,21 +427,55 @@ export default function Home() {
                   </motion.div>
                 </div>
               </motion.div>
-              
-              <motion.div 
-                className="order-1 md:order-2 flex justify-center"
+                <motion.div 
+                className="order-1 md:order-2 flex justify-center relative"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="relative w-64 h-64 md:w-80 md:h-80">
-                  <Image
-                    src="/me1.jpg"
-                    alt="Ahmed Fahmy profile picture"
-                    fill
-                    className="object-cover rounded-full border-4 border-primary p-1"
-                    priority
+                {/* Background shapes */}                <motion.div
+                  className="absolute -z-10 w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-r from-indigo-600/10 to-blue-600/10 dark:from-indigo-400/10 dark:to-blue-400/10 blur-xl"
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, 0]
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                  <div className="relative">
+                  {/* Rotating circle decoration */}
+                  <motion.div
+                    className="absolute -z-1 inset-[-10px] rounded-full border-2 border-dashed border-indigo-600/30 dark:border-indigo-400/30"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   />
+                  
+                  {/* Main image */}                  <div className="relative w-64 h-64 md:w-80 md:h-80">
+                    <Image
+                      src="/me1.jpg"
+                      alt="Ahmed Fahmy profile picture"
+                      fill
+                      className="object-cover rounded-full border-4 border-indigo-600/80 dark:border-indigo-400/80 p-1"
+                      priority
+                    />
+                    
+                    {/* Highlight effect */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-600/40 dark:from-indigo-400/40 to-transparent"
+                      animate={{ 
+                        opacity: [0, 0.4, 0],
+                        rotate: [0, 360]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  </div>
                 </div>
               </motion.div>
             </div>

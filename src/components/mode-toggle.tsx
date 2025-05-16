@@ -32,7 +32,7 @@ export function ModeToggle() {
             y: theme === "dark" ? -30 : 0,
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="absolute inset-0 flex items-center justify-center"
+          className="flex items-center justify-center w-full h-full"
         >
           <Sun className="h-[1.2rem] w-[1.2rem]" />
         </motion.div>
