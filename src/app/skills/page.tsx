@@ -83,14 +83,14 @@ const skillsData = [
   {
     section: "🧠 AI & Computer Vision",
     skills: [
-      { icon: 'opencv', name: "OpenCV" , level: 75, category: 'AI'},
-      { icon: 'tensorflow', name: "TensorFlow", level: 75, category: 'AI' },
-      { icon: 'IPPython', name: "Image Processing" , level: 75, category: 'AI'},
-      { icon: 'numpy', name: "NumPy" , level: 75, category: 'AI'},
-      { icon: 'scikitlearn', name: "Scikit-Learn" , level: 75, category: 'AI'},
-      { icon: 'keras', name: "Keras" , level: 75, category: 'AI'},
-      { icon: 'CV', name: "Computer Vision" , level: 75, category: 'AI'},
-      { icon: 'matplotlib', name: "Matplotlib", level: 75, category: 'AI' },
+      { icon: 'opencv', name: "OpenCV" , level: 75, category: 'AI  '},
+      { icon: 'tensorflow', name: "TensorFlow", level: 75, category: 'AI  ' },
+      { icon: 'IPPython', name: "Image Processing" , level: 75, category: 'AI  '},
+      { icon: 'numpy', name: "NumPy" , level: 75, category: 'AI  '},
+      { icon: 'scikitlearn', name: "Scikit-Learn" , level: 75, category: 'AI  '},
+      { icon: 'keras', name: "Keras" , level: 75, category: 'AI  '},
+      { icon: 'CV', name: "Computer Vision" , level: 75, category: 'AI  '},
+      { icon: 'matplotlib', name: "Matplotlib", level: 75, category: 'AI  ' },
     ]
   }
 ];
@@ -204,7 +204,7 @@ export default function SkillsPage() {
           
           <div className="flex justify-center mb-8">
             <div className="inline-flex rounded-md shadow-sm w-full max-w-full overflow-x-auto gap-2 sm:gap-0 sm:w-auto hide-scrollbar" role="group">
-              {['all', 'frontend', 'backend', 'languages', 'tools', 'databases', 'AI'].map((category) => (
+              {['all', 'backend',  'frontend', 'AI  ' , 'languages', 'databases' , 'tools'].map((category) => (
                 <button
                   key={category}
                   onClick={() => setFilter(category)}
@@ -225,7 +225,7 @@ export default function SkillsPage() {
           </div>
           
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -233,13 +233,15 @@ export default function SkillsPage() {
           >
             {filteredSkills.map((skill, index) => (
               <motion.div key={skill.name + index} variants={itemVariants}>
-                <Card className="overflow-hidden h-full hover:shadow-md transition-shadow">
-                  <CardContent className="p-6">
+                <Card className="overflow-hidden h-full aspect-square hover:shadow-md transition-shadow">
+                  <CardContent className="sm:p-6 p-2">
                     <div className="flex flex-col items-center">
                       <div className="mb-4 text-primary">
-                        {typeof skill.icon === 'string' ? getSkillIcon(skill.icon) : React.createElement(skill.icon)}
+                        {/* Responsive icon size */}
+                        <span className="sm:block hidden">{typeof skill.icon === 'string' ? getSkillIcon(skill.icon) : React.createElement(skill.icon)}</span>
+                        <span className="sm:hidden block">{typeof skill.icon === 'string' ? React.cloneElement(getSkillIcon(skill.icon), { className: 'w-4 h-4' }) : React.createElement(skill.icon, { className: 'w-4 h-4' })}</span>
                       </div>
-                      <h3 className="font-medium mb-2">{skill.name}</h3>
+                      <h3 className="font-medium mb-2 sm:text-base text-xs text-center">{skill.name}</h3>
                       {skill.level && (
                         <>
                           <div className="w-full bg-muted/50 rounded-full h-2 mb-1">
