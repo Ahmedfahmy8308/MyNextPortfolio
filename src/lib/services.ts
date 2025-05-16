@@ -29,7 +29,6 @@ export const messageService = {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      credentials: "include", 
       body: JSON.stringify(messageData),
     });
 
