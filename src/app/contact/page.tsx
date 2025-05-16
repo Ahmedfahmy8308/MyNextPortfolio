@@ -169,7 +169,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-medium">LinkedIn</h3>
                     <a 
-                      href="https://www.linkedin.com/in/ahmed-fahmy-31b14a219" 
+                      href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
