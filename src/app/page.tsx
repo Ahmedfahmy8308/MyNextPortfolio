@@ -70,8 +70,9 @@ export default function Home() {
             "a Software Engineer ....",
             "a Back-End Developer ....",
             "a student at Faculty of Computers and information ....",
-          ],          typeSpeed: 40,
-          backSpeed: 20,
+          ],          
+          typeSpeed: 50,
+          backSpeed: 40,
           loop: true,
         });
       })();
@@ -149,17 +150,25 @@ export default function Home() {
       </motion.a>
     );
   }
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      {/* Social Media Column Left - Static, not fixed, with vertical scroll bar if needed */}
+    <Suspense fallback={
+      <div className="fixed inset-0 flex items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 rounded-full border-4 border-indigo-600/30 border-t-indigo-600 animate-spin"></div>
+          <p className="text-sm text-muted-foreground">...</p>
+        </div>
+      </div>
+    }>
       <div className="absolute left-4 top-28 h-[70vh] flex flex-col gap-4 z-40 overflow-y-auto scrollbar-thin scrollbar-thumb-primary/60 scrollbar-track-transparent items-center">
         <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
         <SocialLink href="https://www.instagram.com/a7medfahmy8" icon="instagram" />
         <SocialLink href="https://x.com/Ahmed_fahmy8308" icon="twitter" />
         <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
         <SocialLink href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" icon="linkedin" />
-      </div>      {isLoading ? (        <motion.div          key="loader"          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background overflow-hidden"
+      </div>      
+      {isLoading ?
+        (<motion.div key="loader" 
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background overflow-hidden"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ 
@@ -170,7 +179,9 @@ export default function Home() {
               ease: "easeInOut" 
             }
           }}
-        >          {/* Animated background with flowing particles */}          <div className="absolute inset-0 overflow-hidden">
+        >      
+        {/* Animated background with flowing particles */} 
+            <div className="absolute inset-0 overflow-hidden">
             {Array(15).fill(0).map((_, i) => (
               <motion.div 
                 key={i}
@@ -187,7 +198,8 @@ export default function Home() {
                   opacity: [0.2, 0.6, 0.2],
                   scale: [1, 1.2, 1],
                 }}
-                transition={{                  duration: 6, // Faster background particle movement
+                transition={{                  
+                  duration: 6, 
                   repeat: Infinity, 
                   ease: "easeInOut",
                 }}
@@ -206,18 +218,21 @@ export default function Home() {
               duration: 0.6,
               ease: "easeOut"
             }}
-          >            {/* AF Logo with rotation */}
+          >           
+          {/* AF Logo with rotation */}
             <motion.div 
-              className="relative w-28 h-28"                animate={{ 
+              className="relative w-28 h-28"                
+              animate={{ 
                   rotate: 360
                 }}
                 transition={{ 
-                  duration: 5, // Faster rotation
+                  duration: 5,
                   repeat: Infinity,
                   ease: "linear"
                 }}
             >
-              {/* Pulse effect rings */}              <motion.div
+              {/* Pulse effect rings */}              
+              <motion.div
                 className="absolute inset-[-10px] rounded-full"
                 animate={{ 
                   boxShadow: [
@@ -268,14 +283,16 @@ export default function Home() {
                   repeat: Infinity,
                   ease: "easeInOut" 
                 }}
-              >                {/* Counter-rotating text to keep it upright */}
+              >                
+              {/* Counter-rotating text to keep it upright */}
                 <motion.div 
                   className="relative flex items-center justify-center w-full h-full"
                   animate={{ 
                     rotate: -360
                   }}
-                  transition={{                    rotate: {
-                      duration: 5, // Faster counter-rotation
+                  transition={{                    
+                    rotate: {
+                      duration: 5, 
                       repeat: Infinity,
                       ease: "linear"
                     }
@@ -292,7 +309,8 @@ export default function Home() {
                       opacity: [0.8, 1, 0.8]
                     }}
                     transition={{ 
-                      duration: 1.5, // Faster text shadow animation
+                      duration: 1.5, 
+                      
                       repeat: Infinity,
                       ease: "easeInOut",
                       delay: 0
@@ -327,7 +345,8 @@ export default function Home() {
               </motion.div>
                 {/* Decorative dots */}
               {/* Removed the decorative dots as requested */}
-            </motion.div>              {/* Loading indicator - Progress bar style */}
+            </motion.div>              
+            {/* Loading indicator - Progress bar style */}
             <motion.div 
               className="absolute -bottom-10 w-36 flex flex-col gap-1 justify-center items-center"
               initial={{ opacity: 0 }}
@@ -342,7 +361,8 @@ export default function Home() {
                   animate={{ 
                     width: ["0%", "100%", "0%"], 
                   }}
-                  transition={{                  duration: 1.5, // Faster animation
+                  transition={{
+                  duration: 1.5, // Faster animation
                   repeat: Infinity, 
                   ease: "easeInOut"
                   }}
@@ -379,19 +399,20 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <div>                    
-                  <motion.h1                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white dark:text-white leading-tight"
+                  <motion.h1                    
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white dark:text-white leading-tight"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.8 }}>  
                     Ahmed Fahmy
-                  </motion.h1>
+                  </motion.h1>                  
                   <motion.h3 
                     className="text-2xl mb-4 font-medium flex items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                   >
-                  <span ref={typedRef} className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-300 font-bold auto-input"></span>
+                  <span ref={typedRef} className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-300 font-bold auto-input text-base sm:text-lg md:text-xl lg:text-2xl"></span>
                   </motion.h3>
                     <motion.div
                     className="relative mb-8"
