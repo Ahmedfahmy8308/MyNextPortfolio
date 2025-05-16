@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { messageService } from '@/lib/services';
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
@@ -27,21 +28,26 @@ export default function ContactPage() {
     handleSubmit, 
     reset,
     formState: { errors } 
-  } = useForm<ContactFormData>();
-
-  const onSubmit = async () => {
+  } = useForm<ContactFormData>();  const onSubmit = async (data: ContactFormData) => {
     setLoading(true);
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await messageService.sendMessage({
+        name: data.name,
+        phone: data.phone,
+        subject: data.subject,
+        content: data.message
+      });
       
       toast.success("Message sent!", {
         description: "Thank you for your message. I'll get back to you soon.",
       });
-            reset();
-    } catch {
-      toast.error("Error", {
-        description: "There was a problem sending your message. Please try again.",
+      
+      reset();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error("Message Failed", {
+        description: error instanceof Error ? error.message : "There was a problem sending your message. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -178,8 +184,7 @@ export default function ContactPage() {
                     </a>
                   </div>
                 </motion.div>
-              </motion.div>
-              <motion.form 
+              </motion.div>              <motion.form 
                 onSubmit={handleSubmit(onSubmit)} 
                 className="md:col-span-2 space-y-6 card bg-background/70 backdrop-blur-sm p-6 rounded-xl border border-border/40 shadow-sm"
                 initial="hidden"
@@ -264,10 +269,22 @@ export default function ContactPage() {
                     disabled={loading} 
                     className="gap-2 bg-gradient-to-r from-primary to-indigo-500 hover:from-indigo-500 hover:to-primary text-white shadow-md hover:shadow-lg transition-all hover:translate-y-[-2px]"
                   >
-                    {loading ? "Sending..." : "Send Message"}
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+                    {loading ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </>
+                    )}
                   </Button>
                 </motion.div>
               </motion.form>
