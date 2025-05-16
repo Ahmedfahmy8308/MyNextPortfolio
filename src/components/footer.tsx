@@ -45,7 +45,7 @@ export default function Footer() {
               <SocialLink href="https://x.com/Ahmed_fahmy8308" icon="twitter" />
               <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
               <SocialLink href="https://www.facebook.com/A7medfahmy8?locale=ar_AR" icon="facebook" />
-              <SocialLink href="https://www.youtube.com/FahmyCodeHub" icon="youtube" />
+              <SocialLink href="https://www.youtube.com/@FahmyCodeHub" icon="youtube" />
             </div>
           </div>
         </div>
