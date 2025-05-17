@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { ServicesStructuredData } from '@/components/structured-data';
 
 // Import components with dynamic loading
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
@@ -184,15 +185,14 @@ export default function ServicesPage() {
       transition: { duration: 0.5, ease: "easeInOut" }
     },
     exit: { opacity: 0, transition: { duration: 0.3 } }
-  };
-
-  return (
+  };  return (
     <motion.main
       initial="hidden"
       animate="visible"
       exit="exit"
       variants={pageVariants}
     >
+      <ServicesStructuredData />
       <section className="py-24 px-6 md:px-10 lg:px-16  overflow-hidden">
         <div className="container mx-auto px-8 md:px-14 lg:px-20" data-aos="fade-up">
           <div className="text-center mb-12">

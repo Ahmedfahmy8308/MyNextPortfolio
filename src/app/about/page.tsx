@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { AboutStructuredData } from '@/components/structured-data';
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
@@ -96,6 +97,7 @@ export default function AboutPage() {
         </motion.p>
       </div>
     }>
+      <AboutStructuredData />
       <motion.main
         initial="hidden"
         animate="visible"

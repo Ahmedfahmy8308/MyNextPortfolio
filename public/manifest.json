@@ -1,0 +1,22 @@
+{
+  "name": "Ahmed Fahmy - Software Engineer",
+  "short_name": "Ahmed Fahmy",
+  "description": "Ahmed Fahmy is a Software Engineer specializing in back-end development, .NET Core, Node.js, Nest.js, Flask, and Computer Vision.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#4338ca",
+  "icons": [
+    {
+      "src": "/Logo 192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "orientation": "portrait"
+}

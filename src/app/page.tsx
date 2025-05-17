@@ -7,6 +7,7 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { HomeStructuredData } from "@/components/structured-data";
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
@@ -213,6 +214,7 @@ export default function Home() {
         </div>
       </div>
     }>
+      <HomeStructuredData />
       <div className="absolute left-4 top-28 h-[70vh] flex flex-col gap-4 z-40 overflow-y-auto scrollbar-thin scrollbar-thumb-primary/60 scrollbar-track-transparent items-center">
         <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
         <SocialLink href="https://www.instagram.com/a7medfahmy8" icon="instagram" />

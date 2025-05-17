@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { SkillsStructuredData } from '@/components/structured-data';
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
@@ -184,14 +185,14 @@ export default function SkillsPage() {
       transition: { duration: 0.5, ease: "easeInOut" }
     },
     exit: { opacity: 0, transition: { duration: 0.3 } }
-  };
-  return (
+  };  return (
     <motion.main
       initial="hidden"
       animate="visible"
       exit="exit"
       variants={pageVariants}
     >
+      <SkillsStructuredData />
       <section className="py-24 px-6 md:px-10 lg:px-16  overflow-hidden">
         <div className="container mx-auto px-8 md:px-14 lg:px-20" data-aos="fade-up">
           <div className="text-center mb-12">

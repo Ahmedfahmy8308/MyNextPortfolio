@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { ScrollToTop } from '@/components/scroll-to-top';
 import { messageService } from '@/lib/services';
+import { ContactStructuredData } from '@/components/structured-data';
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
@@ -102,14 +103,14 @@ export default function ContactPage() {
       transition: { duration: 0.5, ease: "easeInOut" }
     },
     exit: { opacity: 0, transition: { duration: 0.3 } }
-  };
-  return (
+  };  return (
     <motion.main
       initial="hidden"
       animate="visible"
       exit="exit"
       variants={pageVariants}
     >
+      <ContactStructuredData />
       <section className="py-24 px-6 md:px-10 lg:px-16  overflow-hidden">
           {/* Background decoration elements */}
           <div className="absolute top-20 right-0 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>

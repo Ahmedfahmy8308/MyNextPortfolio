@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { ProjectsStructuredData } from '@/components/structured-data';
 
 // Import components with dynamic loading
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
@@ -187,14 +188,15 @@ export default function ProjectsPage() {
     },
     exit: { opacity: 0, transition: { duration: 0.3 } }
   };
-
   return (
     <motion.main
       initial="hidden"
       animate="visible"
       exit="exit"
       variants={pageVariants}
-    >      <section className="py-24 px-6 md:px-10 lg:px-16 overflow-hidden relative">
+    >
+      <ProjectsStructuredData />
+      <section className="py-24 px-6 md:px-10 lg:px-16 overflow-hidden relative">
         {/* Background decoration elements */}
         <div className="absolute top-20 right-0 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
         <div className="absolute bottom-20 left-0 w-72 h-72 bg-indigo-500/5 rounded-full filter blur-3xl opacity-50 -z-10"></div>
