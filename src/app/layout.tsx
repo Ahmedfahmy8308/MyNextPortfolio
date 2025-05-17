@@ -7,6 +7,7 @@ import { AppPageTransition } from "@/components/AppPageTransition";
 import { ScrollToTopOnNavigation } from "@/components/scroll-to-top-on-navigation";
 import { Toaster } from "sonner";
 import { Suspense } from "react";
+import LoadingSpinner from "@/components/client-loading-spinner-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,7 +48,7 @@ export default function RootLayout({
           {/* Component to enable smooth scrolling */}
           <Navbar />
           <ScrollToTopOnNavigation />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingSpinner />}>
             <AppPageTransition>
               {children}
             </AppPageTransition>
