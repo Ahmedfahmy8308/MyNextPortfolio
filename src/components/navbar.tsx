@@ -117,7 +117,7 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             className="inline-flex items-center md:ml-16 lg:ml-32 xl:ml-28"
           >
-            <span className="font-bold text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-blue-500 via-purple-400 to-pink-500 bg-clip-text text-transparent tracking-wide drop-shadow-sm">
+            <span className="font-bold text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-indigo-700 to-blue-600 dark:from-indigo-400 dark:to-blue-400 bg-clip-text text-transparent tracking-wide drop-shadow-sm">
               Ahmed Fahmy
             </span>
           </motion.div>

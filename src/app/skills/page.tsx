@@ -9,12 +9,12 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
 // React Icons imports
-import { FaReact, FaNodeJs, FaDocker, FaPython, FaJava } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaDocker, FaPython, FaJava, FaDatabase } from 'react-icons/fa';
 import { DiVisualstudio } from 'react-icons/di';
 import {
   SiDotnet, SiPostgresql, SiFlask, SiMongodb,
-  SiTensorflow,SiBootstrap, SiOpencv, SiNumpy,SiNextdotjs, SiScikitlearn, SiKeras, SiRedux,
-  SiTailwindcss, SiTypescript, SiHtml5, SiCss3, SiJavascript,SiExpress, SiGit, SiFirebase, SiCplusplus ,SiMysql , SiVercel, SiGithubactions,
+  SiTensorflow, SiBootstrap, SiOpencv, SiNumpy, SiNextdotjs, SiScikitlearn, SiKeras, SiRedux,
+  SiTailwindcss, SiTypescript, SiHtml5, SiCss3, SiJavascript, SiExpress, SiGit, SiFirebase, SiCplusplus, SiMysql, SiVercel, SiGithubactions,
   SiNestjs,
 } from 'react-icons/si';
 import { MdOutlineApi } from 'react-icons/md';
@@ -26,12 +26,12 @@ const skillsData = [
   {
     section: "🖥️ Backend",
     skills: [
-      { icon: 'dotnet', name: '.NET Core', level: 95, category: 'backend' },
-      { icon: "express", name: "Express.js"  , level: 70, category: 'backend'},
+      { icon: 'dotnet', name: '.NET Core', level: 90, category: 'backend' },
+      { icon: "express", name: "Express.js"  , level: 60, category: 'backend'},
       { icon: 'nestjs', name: 'Nest.js', level: 70, category: 'backend' },
       { icon: 'flask', name: "Flask"  , level: 60, category: 'backend'},
       { icon: 'codeSSlashFill', name: "ASP.NET MVC"  , level: 85, category: 'backend'},
-      { icon: 'api', name: "Web API"  , level: 85, category: 'backend'},
+      { icon: 'api', name: "Web API"  , level: 90, category: 'backend'},
       { icon: 'codeSSlashFill', name: "LINQ" , level: 80, category: 'backend' },
       { icon: 'nodejs', name: 'Node.js', level: 70, category: 'backend' },
     ]
@@ -39,45 +39,43 @@ const skillsData = [
   {
     section: "🎨 Frontend",
     skills: [
-      { icon: 'react', name: 'React', level: 90, category: 'frontend' },
-      { icon: 'nextjs', name: 'Next.js', level: 85, category: 'frontend' },
-      { icon: 'tailwind', name: 'Tailwind CSS', level: 95, category: 'frontend' },
-      { icon: 'bootstrap', name: 'Bootstrap', level: 95, category: 'frontend' },
-      { icon: 'html5', name: "HTML5" , level: 95, category: 'frontend'},
-      { icon: 'css3', name: "CSS3" , level: 95, category: 'frontend'},
-      { icon: 'typescript', name: 'TypeScript', level: 85, category: 'frontend' },
-      { icon: 'javascript', name: 'JavaScript', level: 90, category: 'frontend' },
+      { icon: 'react', name: 'React', level: 70, category: 'frontend' },
+      { icon: 'nextjs', name: 'Next.js', level: 70, category: 'frontend' },
+      { icon: 'tailwind', name: 'Tailwind CSS', level: 70, category: 'frontend' },
+      { icon: 'bootstrap', name: 'Bootstrap', level: 80, category: 'frontend' },
+      { icon: 'html5', name: "HTML5" , level: 85, category: 'frontend'},
+      { icon: 'css3', name: "CSS3" , level: 85, category: 'frontend'},
 
     ]
   },
   {
     section: "💻 Languages",
     skills: [
-      { icon: 'cplusplus', name: 'C++', level: 80, category: 'languages' },
+      { icon: 'cplusplus', name: 'C++', level: 90, category: 'languages' },
       { icon: 'csharp', name: 'C#', level: 90, category: 'languages' },
-      { icon: 'python', name: 'Python', level: 80, category: 'languages' },
+      { icon: 'python', name: 'Python', level: 90, category: 'languages' },
       { icon: 'javascript', name: "JavaScript" ,  level: 90, category: 'languages'},
       { icon: 'typescript', name: "TypeScript" , level: 90, category: 'languages' },
-      { icon: 'sql', name: "SQL" , level: 80, category: 'languages'},
+      { icon: 'sql', name: "SQL" , level: 90, category: 'languages'},
     ]
   },
   {
     section: "🛠️ Tools & Cloud",
     skills: [
-      { icon: FaDocker, name: "Docker"  , level: 95, category: 'tools'},
+      { icon: FaDocker, name: "Docker"  , level: 90, category: 'tools'},
       { icon: SiGithubactions, name: "GitHub Actions" , level: 85, category: 'tools'},
       { icon: 'git', name: 'Git', level: 85, category: 'tools' },
-      { icon: SiVercel, name: "Vercel" , level: 95, category: 'tools'},
+      { icon: SiVercel, name: "Vercel" , level: 90, category: 'tools'},
     ]
   },
   {
     section: "Databases",
     skills: [
-      { icon: 'sql', name: 'SQL', level: 80, category: 'databases' },
-      { icon: 'mysql', name: "MySQL" , level: 85, category: 'databases' },
-      { icon: 'postgreSQL', name: "PostgreSQL"  , level: 85, category: 'databases'},
-      { icon: 'firebase', name: 'Firebase', level: 75, category: 'databases' },
-      { icon: 'mongodb', name: 'MongoDB', level: 75, category: 'databases' },
+      { icon: 'sql', name: 'SQL Server', level: 90, category: 'databases' },
+      { icon: 'mysql', name: "MySQL" , level: 90, category: 'databases' },
+      { icon: 'postgreSQL', name: "PostgreSQL"  , level: 80, category: 'databases'},
+      { icon: 'firebase', name: 'Firebase', level: 80, category: 'databases' },
+      { icon: 'mongodb', name: 'MongoDB', level: 80, category: 'databases' },
     ]
   },
   {
@@ -102,12 +100,10 @@ function getSkillIcon(iconName: string, small = false) {
     react: <FaReact className={sizeClass} />,
     nodejs: <FaNodeJs className={sizeClass} />,
     nextjs: <SiNextdotjs className={sizeClass} />,
-    tailwind: <SiTailwindcss className={sizeClass} />,
-    typescript: <SiTypescript className={sizeClass} />,
-    javascript: <SiJavascript className={sizeClass} />,
+    tailwind: <SiTailwindcss className={sizeClass} />,    typescript: <SiTypescript className={sizeClass} />,    javascript: <SiJavascript className={sizeClass} />,
     dotnet: <SiDotnet className={sizeClass} />,
     nestjs: <SiNestjs className={sizeClass} />,
-    sql: <SiMysql className={sizeClass} />,
+    sql: <FaDatabase className={sizeClass} />,
     mongodb: <SiMongodb className={sizeClass} />,
     csharp: <DiVisualstudio className={sizeClass} />,
     python: <FaPython className={sizeClass} />,

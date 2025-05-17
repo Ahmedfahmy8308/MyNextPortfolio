@@ -62,7 +62,7 @@ export default function Footer() {
             <div className="flex flex-wrap gap-4">
               <SocialLink href="https://github.com/Ahmedfahmy8308" icon="github" />
               <SocialLink href="https://www.linkedin.com/in/ahmed-fahmy-174191260/" icon="linkedin" />
-              <SocialLink href="https://codeforces.com/profile/Ahmedfahmmy" icon="codeforces" />
+              <SocialLink href="https://codeforces.com/profile/_Fahmy" icon="codeforces" />
               <SocialLink href="https://www.instagram.com/a7medfahmy8/" icon="instagram" />
               <SocialLink href="https://x.com/Ahmed_fahmy8308" icon="twitter" />
               <SocialLink href="https://api.whatsapp.com/send?phone=201015205654&text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%F0%9F%91%8B" icon="whatsapp" />
