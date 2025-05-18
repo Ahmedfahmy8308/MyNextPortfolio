@@ -1,6 +1,4 @@
 import { servicesMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export function generateMetadata(): Metadata {
-  return servicesMetadata;
-}
+export const metadata: Metadata = servicesMetadata;

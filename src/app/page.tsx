@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HomeStructuredData } from "@/components/structured-data";
-
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
 // Use hardcoded fixed values that match exactly between server and client rendering

@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollToTop } from '@/components/scroll-to-top';
 import { ProjectsStructuredData } from '@/components/structured-data';
-
 // Import components with dynamic loading
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 

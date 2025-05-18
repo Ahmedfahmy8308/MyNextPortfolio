@@ -10,6 +10,8 @@ import { AboutStructuredData } from '@/components/structured-data';
 
 const Footer = dynamic(() => import('@/components/footer'), { ssr: false });
 
+
+
 export default function AboutPage() {
   useEffect(() => {
     const initAOS = async () => {
@@ -96,8 +98,7 @@ export default function AboutPage() {
           >...</motion.span>
         </motion.p>
       </div>
-    }>
-      <AboutStructuredData />
+    }>      <AboutStructuredData />
       <motion.main
         initial="hidden"
         animate="visible"

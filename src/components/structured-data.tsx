@@ -15,6 +15,7 @@ export function HomeStructuredData() {
           "url": "https://ahmedfahmy.me",
           "image": "https://ahmedfahmy.me/images/me1.jpg",
           "sameAs": [
+            "https://www.facebook.com/A7medfahmy8",
             "https://github.com/Ahmedfahmy8308",
             "https://www.instagram.com/a7medfahmy8",
             "https://x.com/Ahmed_fahmy8308",
@@ -197,7 +198,7 @@ export function ContactStructuredData() {
             "email": "info@fhmy8308@gmail.com",
             "telephone": "+201015205654",
             "jobTitle": "Software Engineer",
-            "url": "https://ahmedfahmy.me"
+            "url": "https://ahmedfahmy.me/contact"
           }
         })
       }}

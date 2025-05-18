@@ -87,7 +87,6 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="ahmed-portfolio-theme"
         >
-          {/* Component to enable smooth scrolling */}
           <Navbar />
           <ScrollToTopOnNavigation />
           <Suspense fallback={<LoadingSpinner />}>

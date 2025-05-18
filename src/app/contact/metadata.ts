@@ -1,6 +1,4 @@
 import { contactMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
-export function generateMetadata(): Metadata {
-  return contactMetadata;
-}
+export const metadata: Metadata = contactMetadata;
